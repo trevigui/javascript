@@ -8,16 +8,22 @@ console.log('exemple2'); /* Ceci est aussi un commentaire. On le met au milieu d
 
 
 // Indiquer les multiples de 5 et de 3
+//Variable modulus(%) x signifie "le reste de la variable qui est divisible par x"
 
 function estMultipleDeTrois(nombre) {
-    return nombre % 3 === 0;
+    return nombre % 3 === 0; // Si le reste d'une division de la variable par 3 est égal à 0, alors le nombre est un multiple de 3.
+    // Retournera "true" si le résultat de nombre % 3 est 0.
+    // donc estMultipleDeTrois(nombre) devient estMultipleDeTrois(true) si le résultat de nombre % 3 est 0. 
 }
 function estMultipleDeCinq(nombre) {
-    return nombre % 5 === 0;
+    return nombre % 5 === 0; // Si le reste d'une division de la variable par 3 est égal à 0, alors le nombre est un multiple de 5.
+    // Retournera "true" si le résultat de nombre % 5 est 0.
+    // donc estMultipleDeCinq(nombre) devient estMultipleDeCinq(true) si le résultat de nombre % 5 est 0. 
 }
 for ( let nombre=1 ; nombre<=199 ; nombre++ ) { 
-    if (estMultipleDeTrois(nombre) && estMultipleDeCinq(nombre)) {
-        document.write("<p>" + nombre + " FIZZBUZZ</p>");
+    if (estMultipleDeTrois(nombre) && estMultipleDeCinq(nombre)) {  // && opérateur logique qqch ET qqch. Veiller à ne pas fermer la parenthèse avant le &&, ne pas séparer les deux conditions entre quatre parenthèses. C'est la parenthèse du if, il ne peut y en avoir qu'une seule.
+        // On pourrait sinon créer une fonction estMultipleDeQuinze et ça engloberait tous mes ifs d'un coup.
+        document.write("<p>" + nombre + " FIZZBUZZ</p>"); // It is obligatory that I put this condition up top as there already is a FIZZ condition for number 15 and it will be read first if the FIZZ condition is atop the list.
     }
     else if (estMultipleDeTrois(nombre)) {
         document.write("<p>" + nombre + " FIZZ</p>");
@@ -33,7 +39,7 @@ for ( let nombre=1 ; nombre<=199 ; nombre++ ) {
 
 
 
-// Chatbote
+// Chatbot
 
 let input = prompt('Posez une question') ;
 if (input == 'bonjour') { // Do not use the the assignment operator (=).
@@ -63,3 +69,48 @@ function chatBot() {
     }
 }
 chatBot() // Appel de la fonction chatBot créée au dessus.
+
+                        // Devine mon chiffre ---- Marche passsssssssssssssssssssssssssssssssssssssssss
+
+
+                        let win = Math.round(Math.random() * 100) ;
+                        let chance = prompt("Trouve le bon nombre entre 1 et 100.") ;
+                        for (let attempt = 1 ; attempt>=10 || chance !== win ; attempt++ ) { // to put multiple let declarations in a 'for' loop, I mustn't repeat 'let'.
+                            // By default, math.random() picks a number from 0 to 1, so multiplying it to 100  will make it into a number b/w 1 and 100.
+                            if (chance > win) {
+                                alert('Trop haut!') ;
+                            } else if (chance < win) {          //Attention, 'if else' n'est pas possible. C'est 'else if' qu'il faut écrire.
+                                alert('Trop bas!') ;
+                            } else if (chance === win)  {
+                                alert('Bravo') ;
+                            }
+                        }
+
+function guessingGame() {
+    // Initialiser le nombre aléatoire
+    let secretNumber = Math.floor(Math.random() * 101);
+    /console.log('Le nombre secret est :', secretNumber); affiche le resultat dans la console/
+
+    // Permettre au joueur de tenter de deviner le nombre
+    for (let i = 0; i < 10; i++) {
+        let guess = parseInt(prompt("Entrez un nombre entre 0 et 100:"));
+
+    // Vérifier si le joueur a réussi à deviner le bon nombre
+    if (guess === secretNumber) {
+        alert("Bravo ! Vous avez deviné le bon nombre !");
+        return;
+    }
+
+    // Informer le joueur s'il doit saisir un nombre plus grand ou plus petit
+    else if (guess < secretNumber) {
+        alert("Plus grand");
+    } else {
+        alert("Plus petit");
+    }
+}
+
+// Si le joueur a épuisé toutes ses tentatives, afficher le nombre secret
+alert("Dommage, vous avez épuisé toutes vos tentatives ! Le nombre secret était " + secretNumber + ".");
+}
+guessingGame();
+

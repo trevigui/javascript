@@ -1,11 +1,12 @@
 //script ending prematurely is a sign that a semicolon is missing somewhere.
 //want use the || directly in .includes() method it seems, must multiply the variable call...... for now.
-// testzeteztzeteztezf
 
+// variable++ signifies variable+variable but using variable+variable will cause an infinite loop, do not use . But be careful as it uses the working value of your variable, in a loop if the variables changes, variable++ keeps the original value of the variable.
 
 function chatBot() {
     let order = prompt('Do you want to order takeaway or would you like to book a table?') ;
-    if (order.toLowerCase().includes('book') || order.toLowerCase().includes('table') == true) {
+    if (order.toLowerCase().includes('book') || order.toLowerCase().includes('table') == true) { // Beware the =, ==, and ===, those must be understood to prevent mistakes.
+                                                                                                 // The includes() method returns a usabe true or false value. In that case the toLowerCase might be useless here as "true" is in lowercase already.
         let participants = prompt ('Great choice! How many people will be there? ype the number below:') ;
         let surname = prompt ('What name should I put you down as?') ;0
         let bookingTime = prompt('At what time would you like to come?') ;
@@ -13,16 +14,20 @@ function chatBot() {
     } else if (order.toLowerCase().includes('take') || order.toLowerCase().includes('away') || order.toLowerCase().includes('takeaway') == true) {
         let foodChoice = prompt('Takeaway it is. Would you prefer to order a menu or a la carte?') ;
         if (foodChoice.toLowerCase().includes('menu') == true) {
-            let menuChoice = prompt ('Coming right up! Here are your options: \n\n •nMidday/Dinnertime menu \n• Kid\'s menu \n\nWhich one will it be?') ;
-            if (menuChoice.toLowerCase().includes('midday' || 'dinnertime' || 'normal' || 'regular' || 'adult') == true) {
-                let amount = prompt ('How many do you need?') ;
-                let pickupTime = prompt ('At what time would you like to pick up your order?') ;
-                alert('Your order for '+amount+' midday/dinnertime menu(s) has been taken and will be ready at '+pickupTime+'.\nThank you for choosing us.\nDo note that we reserve the right to cancel this booking if it is not placed within opening times.\nPlease cancel your booking 24 hours in advance if you cannot honor it.') ;
-            } else if(menuChoice.toLowerCase().includes('kid') || menuChoice.toLowerCase().includes('meal')  == true) {
-                let amount = prompt ('How many do you need?') ;
-                let pickupTime = prompt ('At what time would you like to pick up your order?') ;
-                alert('Your order for '+amount+' kid\'s menu(s) has been taken and will be ready at '+pickupTime+'.\nThank you for choosing us.\nDo note that we reserve the right to cancel this booking if it is not placed within opening times.\nPlease cancel your booking 24 hours in advance if you cannot honor it.') ;
-            } else { prompt('Sorry, I did not understand. Do you want a menu or a la carte?') ;
+            /* while (menuChoice == ('foraWhile')) ; */ { // Cannot use a while loop and declare a variable inside its parenthesis, it's like catch-22. It improptu-closes the script and creates an infinite loop.Plus the variables declared inside the loop are forgotten once the while loop loops into itself. It sucks. Onliy use > < operators inside the while(expression). 
+                // For this loop maybe use a switch loop combined with a break this loop so the code resumes normally (break is not recommended as it makes the code obtuse.)
+                let menuChoice = prompt ('Coming right up! Here are your options: \n\n • Midday/Dinnertime menu \n• Kid\'s menu \n\nWhich one will it be?') ;
+                    if (menuChoice.toLowerCase().includes('midday' || 'dinnertime' || 'normal' || 'regular' || 'adult') == true) {
+                        let amount = prompt ('How many do you need?') ;
+                        let pickupTime = prompt ('At what time would you like to pick up your order?') ;
+                        alert('Your order for '+amount+' midday/dinnertime menu(s) has been taken and will be ready at '+pickupTime+'.\nThank you for choosing us.\nDo note that we reserve the right to cancel this booking if it is not placed within opening times.\nPlease cancel your booking 24 hours in advance if you cannot honor it.') ;
+                    } else if(menuChoice.toLowerCase().includes('kid') || menuChoice.toLowerCase().includes('meal')  == true) {
+                        let amount = prompt ('How many do you need?') ;
+                        let pickupTime = prompt ('At what time would you like to pick up your order?') ;
+                        alert('Your order for '+amount+' kid\'s menu(s) has been taken and will be ready at '+pickupTime+'.\nThank you for choosing us.\nDo note that we reserve the right to cancel this booking if it is not placed within opening times.\nPlease cancel your booking 24 hours in advance if you cannot honor it.') ;
+                    } else {
+                        alert('Sorry, I did not understand');
+                    }
             }
         } else if (foodChoice.toLowerCase().includes('carte') || foodChoice.toLowerCase().includes('pick') || foodChoice.toLowerCase().includes('myself') || foodChoice.toLowerCase().includes('choose') || foodChoice.toLowerCase().includes('what i want') == true ) {
             let foodName = prompt('Sure, here are our specialties:\n\n• Beef Wellington \n• Cordon Bleu \n\nWhich dish do you wish to order? Please type in its name:') ;// The \n signals a new line.
@@ -41,5 +46,6 @@ function chatBot() {
     } else {
         prompt('Sorry, I did not understand. Do you want to order takeaway or would you like to book a table?') ;
     }
+    alert("END");
 }
 chatBot()
