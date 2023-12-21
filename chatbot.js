@@ -1,5 +1,6 @@
 //script ending prematurely is a sign that a semicolon is missing somewhere.
 //want use the || directly in .includes() method it seems, must multiply the variable call...... for now.
+// testzeteztzeteztezf
 
 
 function chatBot() {

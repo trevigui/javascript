@@ -33,7 +33,7 @@ for ( let nombre=1 ; nombre<=199 ; nombre++ ) {
 
 
 
-// Chatbot
+// Chatbote
 
 let input = prompt('Posez une question') ;
 if (input == 'bonjour') { // Do not use the the assignment operator (=).
