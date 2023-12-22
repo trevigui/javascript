@@ -5,6 +5,9 @@ console.log('exemple2'); /* Ceci est aussi un commentaire. On le met au milieu d
 
 // clear() pour clear la console
 
+// les fonctions doivent finir par return() pour servir à quelque chose. dans le code, il faut retourner la valeur de la fonction. S'il y a une fonction parent contenant plusieurs fonctions enfants, on peut ne mettre qu'un return qu'à la fin de la fonction parent.
+// En supposant que je mets une boucle for dans ma fonction, je peux mettre un return; dans ma boucle for pour créer un point d'arrêt (un peu comme un break.)
+
 
 
 // Indiquer les multiples de 5 et de 3
@@ -86,31 +89,33 @@ chatBot() // Appel de la fonction chatBot créée au dessus.
                             }
                         }
 
-function guessingGame() {
-    // Initialiser le nombre aléatoire
-    let secretNumber = Math.floor(Math.random() * 101);
-    /console.log('Le nombre secret est :', secretNumber); affiche le resultat dans la console/
+                // Devine mon chiffre de Jérémie
+                                        
+                function guessingGame() {
+                    // Initialiser le nombre aléatoire
+                    let secretNumber = Math.floor(Math.random() * 101);
+                    /console.log('Le nombre secret est :', secretNumber); affiche le resultat dans la console/
 
-    // Permettre au joueur de tenter de deviner le nombre
-    for (let i = 0; i < 10; i++) {
-        let guess = parseInt(prompt("Entrez un nombre entre 0 et 100:"));
+                    // Permettre au joueur de tenter de deviner le nombre
+                    for (let i = 0; i < 10; i++) {
+                        let guess = parseInt(prompt("Entrez un nombre entre 0 et 100:"));
 
-    // Vérifier si le joueur a réussi à deviner le bon nombre
-    if (guess === secretNumber) {
-        alert("Bravo ! Vous avez deviné le bon nombre !");
-        return;
-    }
+                    // Vérifier si le joueur a réussi à deviner le bon nombre
+                    if (guess === secretNumber) {
+                        alert("Bravo ! Vous avez deviné le bon nombre !");
+                        return;
+                    }
 
-    // Informer le joueur s'il doit saisir un nombre plus grand ou plus petit
-    else if (guess < secretNumber) {
-        alert("Plus grand");
-    } else {
-        alert("Plus petit");
-    }
-}
+                    // Informer le joueur s'il doit saisir un nombre plus grand ou plus petit
+                    else if (guess < secretNumber) {
+                        alert("Plus grand");
+                    } else {
+                        alert("Plus petit");
+                    }
+                    }
 
-// Si le joueur a épuisé toutes ses tentatives, afficher le nombre secret
-alert("Dommage, vous avez épuisé toutes vos tentatives ! Le nombre secret était " + secretNumber + ".");
-}
-guessingGame();
+                    // Si le joueur a épuisé toutes ses tentatives, afficher le nombre secret
+                    alert("Dommage, vous avez épuisé toutes vos tentatives ! Le nombre secret était " + secretNumber + ".");
+                }
+                guessingGame();
 
