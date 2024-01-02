@@ -8,6 +8,8 @@ console.log('exemple2'); /* Ceci est aussi un commentaire. On le met au milieu d
 // les fonctions doivent finir par return() pour servir à quelque chose. dans le code, il faut retourner la valeur de la fonction. S'il y a une fonction parent contenant plusieurs fonctions enfants, on peut ne mettre qu'un return qu'à la fin de la fonction parent.
 // En supposant que je mets une boucle for dans ma fonction, je peux mettre un return; dans ma boucle for pour créer un point d'arrêt (un peu comme un break.)
 
+// Beware, typing "?" in a comment opens Blackbox AI
+
 
 
 // Indiquer les multiples de 5 et de 3
@@ -78,13 +80,13 @@ chatBot() // Appel de la fonction chatBot créée au dessus.
 
                         let win = Math.round(Math.random() * 100) ;
                         let chance = prompt("Trouve le bon nombre entre 1 et 100.") ;
-                        for (let attempt = 1 ; attempt>=10 || chance !== win ; attempt++ ) { // to put multiple let declarations in a 'for' loop, I mustn't repeat 'let'.
-                            // By default, math.random() picks a number from 0 to 1, so multiplying it to 100  will make it into a number b/w 1 and 100.
-                            if (chance > win) {
+                        for (let attempt = 1 ; attempt<10 && guess !== win ; attempt++ ) { // to put multiple let declarations in a 'for' loop, I mustn't repeat 'let'.
+                            // By default, math.random() picks a number from 0 to 1 (e.g. 0,47), so multiplying it to 100  will make it into a number b/w 1 and 100 (e.g. 47).
+                            if (guess > win) {
                                 alert('Trop haut!') ;
-                            } else if (chance < win) {          //Attention, 'if else' n'est pas possible. C'est 'else if' qu'il faut écrire.
+                            } else if (guess < win) {          //Attention, 'if else' n'est pas possible. C'est 'else if' qu'il faut écrire.
                                 alert('Trop bas!') ;
-                            } else if (chance === win)  {
+                            } else if (guess === win)  {
                                 alert('Bravo') ;
                             }
                         }
@@ -93,8 +95,8 @@ chatBot() // Appel de la fonction chatBot créée au dessus.
                                         
                 function guessingGame() {
                     // Initialiser le nombre aléatoire
-                    let secretNumber = Math.floor(Math.random() * 101);
-                    /console.log('Le nombre secret est :', secretNumber); affiche le resultat dans la console/
+                    let secretNumber = Math.floor(Math.random() * 101);                                                 // * 101 = erreur de la part de Jérémie ? 🫣
+                    console.log('Le nombre secret est :', secretNumber); //affiche le resultat dans la console.
 
                     // Permettre au joueur de tenter de deviner le nombre
                     for (let i = 0; i < 10; i++) {
