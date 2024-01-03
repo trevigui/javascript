@@ -1,3 +1,10 @@
+<!-- CE QU'IL FAUT RETENIR POUR LES FONCTIONS => Souvent si je n'ai pas les restultats escomptés, c'est que j'ai oublié d'appeler les variables nécessaire lors de la crétaion de la fonction. -->
+<!-- Sinon, la fonction reverra un undefined ou un null coup pour coup. -->
+<!-- On peut créer une variable directement en paramètre de fonction, pas besoin de la créer avant, ça fonctionne. Puis on définit la valeur variable lors de l'appel de la fonction. -->
+<!-- Without a return statement inside the function, the function will always return "undefined". On peut enfouir un seul "return;" dans une fonction if pour qu'il nous renvoie uniquement notre if. -->
+<!-- When calling the function with parameters, it is recommended you assign a default value to a parameter (e.g. function(parameter1 = 1, parameter2 = 2)) -->
+<!-- Search w3school Automatic Type Conversion (Le premier argument indique le type dans lequel les autres arguments seront convertis. -->
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -12,7 +19,7 @@
      return nombre / 2;
     }
     // ***Affichage du résultat***
-        // var result = diviserParDeux(nombre); /* Bien rajouter le parammètre (nombre) même quand on appelle la fonction, sinon le résultat sera NaN.*/
+        // var result = diviserParDeux(nombre); /* Bien rajouter le paramètre (nombre) même quand on appelle la fonction, sinon le résultat sera NaN.*/
         // alert(result);
     
     // ***Test unitaire de la fonction diviser par deux***
@@ -20,31 +27,32 @@
     if(diviserParDeux(2) === 1) {
         alert("Résultat = " + nombre / 2 + ".\n Vous avez divisé " + nombre + " par 2.");
     } else if(diviserParDeux(4) === 2) {
-        alert("Résultat = " + nombre / 2 + ". \n Vous avez divisé " + nombre + " par 2.");
+        alert("Résultat = " + nombre / 2 + ".\n Vous avez divisé " + nombre + " par 2.");
     } else if(diviserParDeux(nombre) === nombre / 2) {
-        alert("Résultat = " + nombre / 2 + ". \n Vous avez divisé " + nombre + " par 2.");
+        alert("Résultat = " + nombre / 2 + ".\n Vous avez divisé " + nombre + " par 2.");
     } else {
         alert('Erreur : Veuillez taper un nombre.');
     }
     // ****************************************************************************************************
 
     // ***********************************DECLARATION DE LA FONCTION SOMME*********************************
+
+    // Si ça marche pas, essayer en mettant des paramètres dans la fonciton et son appel.
+
     let calculSomme1 = parseInt(prompt('Quel est le premier nombre de votre addition?')) ; // Attention! Le test unitaire m'a permis de découvrir que le prompt renvoie toujours un string, même s'il ne contient que des nombres.
     // Il faut donc pour les additions, rajouter la fonction parseInt() pour éviter que 1+1 soit concaténé en 11.
     // Pour la division en revanche, on peut diviser le littéral par un entier et ça marche sans devoir convertir le littéral en entier.
     let calculSomme2 = parseInt(prompt('Quel est le second nombre de votre addition?')) ;
 
-    function somme() {
 
-    }
-
-    // ***Test unitaire spécifique math random***
     function somme2() {
-        let calculSomme1 = Math.floor(Math.random() * 100) + 1;
-        let calculSomme2 = 1;
+        // *******************Test unitaire*********************
+        // let calculSomme1 = Math.floor(Math.random() * 100) + 1;
+        // let calculSomme2 = 1;
         return calculSomme1 + calculSomme2;
     }
-    alert(somme2()) ;
+    typeof(somme2()) === number ? alert(somme2()) : alert("Error: Did you write two numbers?");
+  
 
     // ****************************************************************************************************
 
@@ -62,7 +70,7 @@
             alert('Le nombre que vous avez tapé est positif.');
         } else if(signe() === 0) {
             alert('Le nombre que vous avez tapé est nul.');
-        } else if(signe() === -0) {
+        } else if(signe() === "-0") {
             alert('Le nombre que vous avez tapé est -0.');
         } else if(signe() === NaN) {
             alert('Erreur : Soit ce que vous avez tapé n\'est pas un nombre, soit une autre erreur a été détectée.');
@@ -72,12 +80,13 @@
     // ****************************************************************************************************
 
     // *******************************DECLARATION DE LA FONCTION FACTORIELLE*******************************
+    let nombreAFacteurs = parseInt(prompt('Veuillez taper un nombre dont vous souhaitez déterminer la factorielle.'));
     function factorielle() { // faut-il ou pas mettre une variable en paramètre de la fonction??
         if (nombreAFacteurs === 0) {
-            return 1 ; // Par convention, la factorielle de 0 sera toujours 1.
+            return 1 ; // Par convention, la factorielle de 0 sera toujours 1. Cet if est facultatif.
         }
         else if (nombreAFacteurs === 1) {
-            return 1 ; // Par convention, la factorielle de 1 sera toujours 1.
+            return 1 ; // Par convention, la factorielle de 1 sera toujours 1. Cet if est facultatif.
         }
         else {
             let i, resultat = 1; // Ici, je déclare la même valeur pour deux variables d'un coup.
@@ -90,8 +99,8 @@
     }
 
 
-    // ***************************** Test unitaire de la fonction factorielle *******************************
-    let nombreAFacteurs = parseInt(prompt('Veuillez taper un nombre dont vous souhaitez déterminer la factorielle.'));
+    // ***************************** Test unitaire de la fonction factorielle ******************************
+    
     if (factorielle() === 1) {
         alert(`La factorielle est 1, vous avez donc tapé 0, 1, ou bien un nombre négatif (ramenant à 0 avec ce calcul); Si ce n'est pas le cas, il y a un bogue.`)
     }
