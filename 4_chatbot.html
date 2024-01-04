@@ -14,7 +14,7 @@
 
     function chatBot() {
         let order = prompt('Do you want to order takeaway or would you like to book a table?') ;
-        if (order.toLowerCase().includes('book') || order.toLowerCase().includes('table') == true) { // Beware the =, ==, and ===, those must be understood to prevent mistakes.
+        if (order.toLowerCase().includes('book') == true || order.toLowerCase().includes('table') == true) { // Beware the =, ==, and ===, those must be understood to prevent mistakes.
                                                                                                     // The includes() method returns a usabe true or false value. In that case the toLowerCase might be useless here as "true" is in lowercase already.
             let participants = prompt ('Great choice! How many people will be there? ype the number below:') ;
             let surname = prompt ('What name should I put you down as?') ;0
