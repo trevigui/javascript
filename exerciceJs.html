@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <!-- <script>
+        for (let monNombre=1; monNombre<=199; monNombre++) { 
+            if (monNombre % 3 == 0 && monNombre % 5 == 0) 
+            {console.log('FIZZBUZZ');
+            }
+            else if (monNombre % 3 == 0) 
+            {console.log('FIZZ');
+            }
+            else if (monNombre % 5 == 0) 
+            {console.log('BUZZ');
+            }
+            else{console.log(monNombre);}
+        }                                    
+    </script> -->
+    <!--<script>
+        let saisiUtilisateur = prompt('Saisis Bonjour');
+        if (saisiUtilisateur === 'Bonjour') {
+            alert('Bonjour à toi');
+        }
+        saisiUtilisateur = prompt('Tu vas bien?');
+        if (saisiUtilisateur === 'Tu vas bien?') {
+            alert('Bien et toi?');
+        }
+        else {alert("Désolé je n'ai rien compris");
+        } 
+    </script>-->
+    <!-- chatbot enquête transport en commun-->
+    <!--<Script>
+        /*... ask the user to say "Bonjour"...*/
+        let maDemande = prompt ('Saisis Bonjour');
+        if (maDemande === 'Bonjour') {
+            alert ('Bonjour à toi');
+        /*..ask the user if he has one minute..*/
+        maDemande = prompt ("Vous avez une minute à m'accorder?");
+            if (maDemande === 'Oui')  {
+            prompt ("Utilisez-vous le transport en commun?"); /*..ask that when the user has on minute..*/
+            }
+            else if (maDemande === 'Non') { /*..answer that when the user has not one minute..*/
+            alert ("Merci au revoir");
+            }
+            if (maDemande === 'Oui'){ /*..when the user has a minute, continue to ask if he takes tram of bus..*/
+                maDemande = prompt ("Prenez-vous le Tram ou le Bus?"); 
+                if (maDemande === 'le Tram') {
+                    prompt ("Quel Tram prenez-vous?");/*..if he takes tram ask wich tram he takes..*/
+                    if ('Tram A') {
+                        prompt ("direction aéroport ou Haillan?");/*..ask if he takes direction aiport or haillan..*/
+                        if('aéroport'){
+                            prompt ("à quelle fréquence le prenez vous?");/*..ask how often he takes tram...*/
+                            if("plusieurs fois"){
+                                alert ("merci de m'avoir acordé votre temps");/*..say tank to the suser...*/
+                            }
+                        }
+                    }
+                }
+                else if (maDemande === 'le Bus'){ 
+                prompt ("Quel ligne de Bus prenez-vous?");/*..if he takes bus ask wich tram he takes..*/
+                    if ('ligne 35')  {
+                        prompt ("direction cracovie ou Gare St-Jean?");/*..ask if he takes direction cracovie or Gare saint-jean..*/
+                        if('cracovie'){
+                            prompt ("à quelle fréquence le prenez vous?");/*..ask how often he takes tram...*/
+                            if("tous les jours"){
+                                alert ("merci de m'avoir acordé votre temps");/*..say tank to the suser...*/
+                            }
+                        }
+                    }
+                }    
+           }
+        }
+    </Script>-->
+  <!--  <script>
+        /*.. chatbot type of animal..*/
+        let questionPosée = prompt ("quelle est la famille de l'animal: poils, écailles, nageoires, plumes ou peau?"); /*..invite suser to write a caractérique of animal..*/
+        if (questionPosée === 'poils' ) { /*..to know if animal is mammal...*/
+            alert ("c'est un mammifère");
+            questionPosée = prompt ("que mange l'animal: viande ou herbe?"); /*..allow to know if animal is carnivorous of herbivore..*/
+            if (questionPosée === "viande" ){ 
+                alert ("c'est un carnivore");
+            }
+            else if (questionPosée === 'herbe') { 
+                alert ("c'est un herbivore");
+            }
+            else {
+                alert ("mauvaise réponse"); /*....return that if answer is not correct.....*/
+            }
+        }
+        else if (questionPosée === 'écailles'){ /*..to know if animal is reptile...*/
+            alert ("c'est un reptile");
+            questionPosée = prompt ("comment se déplace le reptile: en rampant ou avec des pattes?");/*..allow to know if animal is snake or lizard..*/
+            if(questionPosée === 'en rampant'){
+                alert ("c'est un serpent");
+            }
+            else if (questionPosée === 'avec des pattes'){
+                alert ("c'est un lézard");
+            }
+            else {
+                alert ("je ne comprends pas"); /*....return that if answer is not correct.....*/
+            }
+        }
+        else if (questionPosée === 'nageoires'){ /*..to know if animal is a fish...*/
+            alert ("c'est un poisson");
+            questionPosée = prompt ("quelle est la classe du poisson: sélacien ou holocéphale"); /*..allow to know if animal is a shark or tortoise...*/
+            if(questionPosée === 'sélacien'){
+                alert ("c'est un requin");
+            }
+            else if(questionPosée === 'holocéphale'){
+                alert ("c'est une tortue");
+            }
+            else {
+            alert ("ce n'est pas juste"); /*....return that if answer is not correct.....*/
+            }
+        }
+        else if (questionPosée === 'plumes'){ /*..to know if animal is a bird....*/
+            alert ("c'est un oiseau");
+            questionPosée = prompt ("quel cri fait l'oiseau: coin ou corico? "); /*... allow to know if aniaml is a duck or a rooster...*/
+            if (questionPosée === 'coin'){
+                alert ("c'est un canard");
+            }
+            else if (questionPosée === 'corico'){
+                alert ("c'est un coq");
+                }
+            else {
+                alert("j'ai pas compris"); /*....return that if answer is not correct.....*/
+            }
+        }
+        else if (questionPosée === 'peau'){ /*...to know if animal is a amphibian...*/
+            alert ("c'est un amphibien");
+            questionPosée = prompt("comment est la peau de l'amphibien: grele ou épaisse ?"); /*...allow to know if animal is a frog or Toad....*/
+            if(questionPosée === 'grele'){
+                alert ("c'est une grenouille");
+            }
+            else if(questionPosée === 'épaisse'){
+                alert ("c'est un crapaud");
+            }
+            else { 
+                alert("mauvaise réponse"); /*....return that if answer is not correct.....*/
+            }
+        }10
+        else {
+            alert('réponse incorrecte'); /*....return that if answer is not correct.....*/
+        }
+    </script> -->
+    <!--Function-->
+    <!-- aplhapbet list -->
+   <!-- <script> 
+        lettre = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']; 
+        let alphabet = lettre[0];
+        for (let n = 0 ; n <= 25; n++) { 
+            alphabet = lettre [n]; 
+            console.log (alphabet);
+        }
+        let nom = (lettre[9]+lettre[4]+lettre[17]+lettre[4]+lettre [12]+lettre[8]+lettre[4]); 
+        console.log(nom);
+    </script> -->
+    <!-- implementation game -->
+    <!--<script>
+        let nombreSaisiParJoueur = prompt ("Saisi un nombre");
+        if (nombreSaisiParJoueur == 10){
+            alert ('Plus petit');
+        }
+        else if(nombreSaisiParJoueur == 20){20
+                alert ('plus grand');16
+        }
+        else if(nombreSaisiParJoueur == 16){
+            alert ('Bravo!');
+        }
+    </script> -->
+    <!-- guesse game-->
+    <script>
+      /*  let RandomValue = Math.round(Math.random()*100);
+        for (let i = 1; i < 10; i++) {
+            let nombreSecret = prompt ('saisis un nombre');
+            if (nombreSecret == RandomValue) {
+                alert ('Bravo!');
+                console.log (i);
+                console.log (nombreSecret);
+                break;10
+            }
+           else if (nombreSecret < RandomValue) {
+                alert ('plus grand');
+            }
+            else {
+                alert ('plus petit');
+            }  
+            if (i => 10) { /** say falled il not find nombreSecret**/
+           /*     console.log('Perdu');
+            }
+        } */
+    </script> 
+    <!--function section-->
+    <script>
+        /*... funtion divider by 2...*/
+       /* function diviserPardeux (nombreSaisi) {
+            return nombreSaisi / 2;  
+        } 
+        /**sum fuction***/
+        /*function sommeDeuxNombre (a, b) {
+            return a + b ;
+            }*/
+        /**calling the function with parameters**/
+      /* let a = 0;
+        let b = 0 ;
+        for (let i = 0; i <= 100; i++) {
+            a = i;
+            b = 2*i;
+        console.log(sommeDeuxNombre(a , b));
+        }
+        /**sum random + 1***/
+      /* let n = Math.random();
+        console.log(sommeDeuxNombre(n,1));
+        /*function for number sign */
+       /* function signValeur (x) {
+            if (x > 0 ) {
+                return "positif";
+            }
+            else if (x < 0) {
+                return "négatif"
+            }
+            else {
+                return "nul"
+            }
+        } */
+        /*** calling the function signValeur ****/
+      /* let testValeur = prompt ('saisis un nombre');
+        alert (signValeur(testValeur));
+        /** factorial function*/
+    
+      /* function factorielleNombre (n) {
+            let fact = 1;
+                for (let i = 1; i <= n; i++) {
+                    fact = fact * i;
+                }
+                return fact;
+        }
+        /*** calling the function factorielleNombre ***/
+      /* let testFactoriel = prompt('entrez un nombre: ');
+        alert (factorielleNombre(testFactoriel));*/
+    </script>
+   <!-- <script>
+    /** jeu chi fou mi **/
+    /* fonction comparer */
+    function comparerChoix (choix1, choix2) {
+        if (choix1 == choix2) {
+            return 'égalité' ;
+        }
+        else if (choix1 == 'pierre') {
+            if (choix2 == 'ciseau'){
+                return 'ordi gagne' ;
+            }
+            else if (choix2 == 'feuille'){
+                return 'joueur gagne';
+            }
+        }
+        else if (choix1 == 'feuille') {
+            if (choix2 == 'pierre'){
+                return 'ordi gagne';
+            }
+            else if (choix2 == 'ciseau'){
+                return 'joueur gagne';
+            }
+        }
+        else if (choix1 == 'ciseau') {
+            if (choix2 == 'feuille') {
+                return 'ordi gagne';
+            }
+            else if (choix2 == 'pierre') {
+                return 'joueur gagne';
+            }
+        }
+    }
+    /** partie du jeu **/
+    let choixJoueur = 0;
+    let choixOrdi = 0;
+    let scoreJoueur = 0;
+    let scoreOrdi = 0;
+    for (let i = 0 ; i < 3 ; i++) {
+        let choixJoueur = prompt("Entrez votre choix : pierre, feuille ou ciseau");
+        if ( choixOrdi == Math.random() < 0.34){
+            choixOrdi = "pierre";
+        }
+        else if (choixOrdi == Math.random () < 0.67) {
+            choixOrdi = "feuille" ;
+        }
+        else {
+            choixOrdi = "ciseau" ;
+        }
+        let resultatManche = comparerChoix (choixOrdi,choixJoueur);
+        /*console.log ('le resultat est', resultatManche);*/
+        /*** affichage score de la manche */
+        if (resultatManche == 'égalité'){
+           /* console.log ('égalité')*/
+        }
+        else if (resultatManche == 'joueur gagne'){
+           /* console.log('=> Gagnant de la manche:', resultatManche, '(joueur)');*/
+            scoreJoueur++;
+            if (scoreJoueur == 2) {
+                break;
+                alert (" vous avez gagné");
+            }
+        }
+        else {
+           /* console.log('=> Gagnant de la manche:', resultatManche, '(ordi)');*/
+            scoreOrdi++;
+            if (scoreOrdi == 2){
+                break;
+                alert ("Vous avez perdu ! Le ordinateur a remporté le match.");
+            }
+        }
+    }
+    /*** affichage de message gagnant ***/choixJoueur
+    let message ;
+    if (scoreOrdi == scoreJoueur) {
+            message = 'Match nul !';
+        }
+        else if (scoreOrdi > scoreJoueur) {
+            message = 'Vous avez perdu le match !';
+        }
+        else {
+            message = 'Vous avez gagné le match !';
+        }
+        console.log (message + ' Votre score: ' + scoreJoueur + ', ordi: ' + scoreOrdi);
+</script> -->
+<script>
+    /***** TABLEAUX *****/
+    /*** calendrier ****/
+    /*let jours = ['lun ', '007 ', 'mer ', 'jeu ', 'ven ', 'sam ', 'BUG '];
+    let lengthJours = jours.length;
+    jours.pop();
+    jours.push('dim ');
+    jours[1]= 'mar ';
+    console.log ('jours:' + jours + ', lengthJours= ' + lengthJours);*/
+    /*** tableau epicerie ***/
+    let fruits = ['Mangue', 'Raisin', 'Figue', 'Kiwi']; 
+    alert ('les fruits disponibles sont : '  +  fruits); /*** show the list of fruits */
+   let desirClient = prompt ("Quel fruit désirez-vous acheter: Mangue, Raisin, Figue ou Kiwi?"); /*** ask customer to choose */
+    console.log (fruits[0]);
+    if (desirClient == fruits[0]) { /* when the customer chooses a mango*/
+        fruits.splice(0,1);
+        alert ('OK' + ', les fruits disponibles après achat sont: ' + fruits);
+    }
+    else if (desirClient == fruits[1]) { /* when the customer chooses a grape*/
+        fruits.splice(1,1);
+        alert ('OK' + ', les fruits disponibles après achat sont: ' + fruits);
+    }
+    else if (desirClient == fruits[2]) { /* when the customer chooses a fig*/
+        fruits.splice(2,1);
+        alert ('OK' + ', les fruits disponibles après achat sont: ' + fruits);
+    }
+    else if (desirClient == fruits[3]) { /* when the customer chooses a kiwi*/
+        fruits.splice(3,1);
+        alert ('OK' + ', les fruits disponibles après achat sont: ' + fruits);
+    }
+    else { /* when the customer choice is not in the list*/
+        alert ('Non disponible');
+    } 
+    /**** Jeu du pendu **/
+    /*let lettresAttendues = [ 's', 'u', 'p', 'e', 'r', 's' ];
+    let mauvaiseLettre = [];
+    for (let i = 0 ; i <= 10 ; i++) {
+        let lettreDevinee = prompt ("Devines une lettre de a à z");
+        if (lettresAttendues.indexOf(lettreDevinee) == -1) {
+        mauvaiseLettre.push(lettreDevinee) ;
+        }
+        else {
+        lettresAttendues.splice([lettresAttendues.indexOf(lettreDevinee)],1);  
+        }
+        console.log ('Tableau lettres attendues ' + lettresAttendues);
+        console.log ('longueur tableau lettres attendues = ' + lettresAttendues.length)
+        console.log ('Tableau mauvaises lettres ' + mauvaiseLettre) ;
+        console.log ('longueur tableau mauvaises lettre = ' + mauvaiseLettre.length);
+        if (lettresAttendues.length == 0) {
+        break;
+        }
+    }
+    /***** affichage message gagner ou perdu ***/
+   /* if (lettresAttendues.length == 0) {
+        alert ('Vous avez gagné: Bravo!');
+        }
+        else if (mauvaiseLettre.length == 10 && lettresAttendues.length != 0) {
+            alert ('vous avez perdu: retentez');
+        }*/
+    /*** Jeu du pendu BONUS */
+   /* let lettresAttendues = [ 's', 'u', 'p', 'e', 'r', 's' ];
+    let mauvaiseLettre = [];
+    let occurrenceLettre = 0;
+    for (let i = 0 ; i <= 10 ; i++) {
+        let lettreDevinee = prompt ("Devines une lettre de a à z");
+        if (lettresAttendues.indexOf(lettreDevinee) == -1) {
+        mauvaiseLettre.push(lettreDevinee) ;
+        }
+        else if (lettresAttendues.indexOf(lettreDevinee) != -1) {
+        occurrenceLettre++;  
+        }
+        if (occurrenceLettre > 0) {
+        alert(occurrenceLettre + ' fois la lettre '
+        + lettreDevinee + ' dans le mot à trouver !');
+        lettresAttendues.splice([lettresAttendues.indexOf(lettreDevinee)],1);
+        }  
+        console.log ('Tableau lettres attendues ' + lettresAttendues);
+        console.log ('longueur tableau lettres attendues = ' + lettresAttendues.length)
+        console.log ('Tableau mauvaises lettres ' + mauvaiseLettre) ;
+        console.log ('longueur tableau mauvaises lettre = ' + mauvaiseLettre.length);
+        if (lettresAttendues.length == 0) {
+        break;
+        }
+    }
+    /***** affichage message gagner ou perdu ***/
+  /* if (lettresAttendues.length == 0) {
+        alert ('Vous avez gagné: Bravo!');
+    }
+    else if (mauvaiseLettre.length == 10 && lettresAttendues.length != 0) {
+        alert ('vous avez perdu: retentez');
+    }*/
+</script>
+</body>
+</html>
