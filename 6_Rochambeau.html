@@ -35,7 +35,7 @@ La boucle incrémente la valeur de i de 1 et recommence. Cela continue jusqu'à 
 
 <script>
 
-    // Définition des résultats du Math.random pour UserChoice et ComChoice
+    // Définition des résultats du Math.random pour userChoice/userNumber et comChoice
     // Soit pierre == 1
     // Soit papier == 2
     // Soit ciseaux == 3
@@ -45,39 +45,41 @@ La boucle incrémente la valeur de i de 1 et recommence. Cela continue jusqu'à 
     let scoreOrdi = 0 // Très important de mettre mon score à zéro au départ apparemment.
     let scoreUser = 0
 
-    function convertThenCompare() { // Pas besoin de mettre UserChoice en paramètre car la variable a déjà été appelée avant (dans la boucle for, avant l'appel de la fonction convertThenCompare.)
+    function convert() { // Pas besoin de mettre userChoice/userNumber en paramètre car la variable a déjà été appelée avant (dans la boucle for, avant l'appel de la fonction convertThenCompare.)
         
-        if(UserChoice.toLowerCase().includes("pierre") == true) {
-            UserChoice = 1;
+        if(userChoice.toLowerCase().includes("pierre") == true) {
+            userNumber = 1;
         }
-        else if(UserChoice.toLowerCase().includes("papier") == true || UserChoice.toLowerCase().includes("feuille") == true) {
-            UserChoice = 2;
+        else if(userChoice.toLowerCase().includes("papier") == true || userChoice.toLowerCase().includes("feuille") == true) {
+            userNumber = 2;
         }
-        else if(UserChoice.toLowerCase().includes("ciseau") == true ) {
-            UserChoice = 3;
+        else if(userChoice.toLowerCase().includes("ciseau") == true ) {
+            userNumber = 3;
         }
         else {
-            alert('Vous n\'avez pas saisi un choix valide');
+            // en l'état, si je tape 3 fois une erreur, il me met trois fois un message d'erreur.
+            if (userChoice.toLowerCase().includes("pierre") === false || userChoice.toLowerCase().includes("feuille") === false || userChoice.toLowerCase().includes("papier") === false || userChoice.toLowerCase().includes("ciseau") === false ) {
+                userChoice = prompt(`Vous n'avez pas saisi un choix valide. Veuillez choisir entre "pierre" "papier" et "ciseaux".`);
+                convert();
+            }
+            else {
+            alert("JUMP TO NEXT");
+            }
         }
 
-        /* alert(`UserChoice = ${UserChoice}`)       // For troubleshooting */
+        /* alert(`userChoice = ${userChoice}`)       // For troubleshooting */
 
+        }
+
+    function compare()  {
+
+        // switch case à simplifier
         switch(true){ // Les variables utilisées sont déjà appelées dans la fonction parente, pas besoin de les rappeler ici.
-        case (UserChoice === ComChoice) :
-            if(ComChoice === 1) {
+        case (userNumber === comChoice) :
+            if(comChoice === 1 || comChoice === 2 || comChoice === 3) {
                 scoreOrdi++;
                 scoreUser++;
-                alert(`Manche ${manche}\n\nRéponse ORDI : pierre\nEgalité`);
-            }
-            else if(ComChoice === 2) {
-                scoreOrdi++;
-                scoreUser++;
-                alert(`Manche ${manche}\n\nRéponse ORDI : papier\nEgalité`);
-            }
-            else if(ComChoice === 3) {
-                scoreOrdi++;
-                scoreUser++;
-                alert(`Manche ${manche}\n\nRéponse ORDI : ciseaux\nEgalité`);
+                alert(`Manche ${manche}\n\nRéponse ORDI : ${userChoice}\n\nEgalité`);
             }
             else {
                 scoreOrdi++;
@@ -85,40 +87,44 @@ La boucle incrémente la valeur de i de 1 et recommence. Cela continue jusqu'à 
                 alert(`Une erreur est survenue`);
             }
             break;
-        case (UserChoice === 1 && ComChoice === 2) :
-            alert(`Manche ${manche}\n\nRéponse ORDI : feuille\nVous avez perdu.`);
+        case (userNumber === 1 && comChoice === 2) :
+            alert(`Manche ${manche}\n\nRéponse ORDI : feuille\n\nVous avez perdu.`);
             scoreOrdi++;
             break;
-        case (UserChoice === 1 && ComChoice === 3) :
-            alert(`Manche ${manche}\n\nRéponse ORDI : ciseaux.\nVous avez gagné.`);
+        case (userNumber === 1 && comChoice === 3) :
+            alert(`Manche ${manche}\n\nRéponse ORDI : ciseaux.\n\nVous avez gagné.`);
             scoreUser++;
             break;
-        case (UserChoice === 2 && ComChoice === 1) :
-            alert(`Manche ${manche}\n\nRéponse ORDI : pierre\nVous avez gagné.`);
+        case (userNumber === 2 && comChoice === 1) :
+            alert(`Manche ${manche}\n\nRéponse ORDI : pierre\n\nVous avez gagné.`);
             scoreUser++;
             break;
-        case (UserChoice === 2 && ComChoice === 3) :
-            alert(`Manche ${manche}\n\nRéponse ORDI : ciseaux\nVous avez perdu.`);
+        case (userNumber === 2 && comChoice === 3) :
+            alert(`Manche ${manche}\n\nRéponse ORDI : ciseaux\n\nVous avez perdu.`);
             scoreOrdi++;
             break;
-        case (UserChoice === 3 && ComChoice === 1) :
-            alert(`Manche ${manche}\n\nRéponse ORDI : pierre\nVous avez perdu.`);
+        case (userNumber === 3 && comChoice === 1) :
+            alert(`Manche ${manche}\n\nRéponse ORDI : pierre\n\nVous avez perdu.`);
             scoreOrdi++;
             break;
-        case (UserChoice === 3 && ComChoice === 2) :
-            alert(`Manche ${manche}\n\nRéponse ORDI : papier\nVous avez gagné.`);
+        case (userNumber === 3 && comChoice === 2) :
+            alert(`Manche ${manche}\n\nRéponse ORDI : papier\n\nVous avez gagné.`);
             scoreUser++;
             break;
-        default : throw new Error(`Avez-vous tapé "pierre", "papier", ou "ciseaux" ?`); 
+        // default : alert("CHOIX INVALIDE");
+        // default: break;
+        // default : throw new Error(`Avez-vous tapé "pierre", "papier", ou "ciseaux" ?`); 
         }
     }
     
     for(manche=1; manche<4 ; manche++) {
         // my variables have to be called with var in order to be recallable in the function and not be limited to the for loop's hierarchcial level.
-        var ComChoice = Math.ceil(Math.random() * 3); //Using ceil to prevent the computer from choosing "O"
-        /* alert(`ComChoice = ${ComChoice}`)           // For troubleshooting */
-        var UserChoice = prompt(`Manche ${manche}\n\nChoisissez entre "pierre" "papier" et "ciseaux".`);
-        convertThenCompare(UserChoice, ComChoice);
+        var comChoice = Math.ceil(Math.random() * 3); //Using ceil to prevent the computer from choosing "O"
+        /* alert(`comChoice = ${comChoice}`)           // For troubleshooting */
+        var userChoice = prompt(`Manche ${manche}\n\nChoisissez entre "pierre" "papier" et "ciseaux".`);
+        var userNumber = userChoice;
+        convert(userChoice, userNumber, comChoice); // j'ai créé deux fonctions pour que le fait de redemander la réponse ne fasse pas répéter plusieurs fois le résultat.
+        compare(userChoice, userNumber, comChoice);
 
         if(manche === 3)
             if(scoreOrdi > scoreUser) {
@@ -134,7 +140,7 @@ La boucle incrémente la valeur de i de 1 et recommence. Cela continue jusqu'à 
                 alert('Une erreur est survenue.')
             }
         else{
-           ;
+           ;                                            // On laisse volontairement vide.
         }
     }
 

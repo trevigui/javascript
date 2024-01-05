@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<script>
+
+var mauvaisesLettres = [ ]; // sera complété pendant le jeu
+var lettresAttendues = [ 's', 'u', 'p', 'e', 'r' ];
+var a = 0
+
+boucle:
+for (i=0, end = false ; end === false; i++) {
+    var lettreUtilisateur = prompt('Veuillez taper une lettre pour commencer');
+    var lettreUtilisateur = lettreUtilisateur.toLowerCase();
+    if (lettresAttendues[Number(a)].includes(lettreUtilisateur) === true) {                                                                                    // Dunno why but variable a isn't recognized as an integer, had to use parseInt() or Number()... // Notice how .length is not a method, but a property (no () parentheses)
+        for (a=0 ; a<5; a++) {
+            if (lettresAttendues.length > 0) {
+                alert(` La lettre ${lettreUtilisateur} fait bien partie du mot recherché.`) ;
+                lettresAttendues.splice(a, 1); 
+                break;                                  
+            }
+        }
+    } else if (lettresAttendues[Number(a)].includes(lettreUtilisateur) === false) { 
+        continue;
+    } else if (lettresAttendues.length === 0) {                                                                                        
+        let success = new Audio('/resources/sound.mp3');
+        success.play();
+        alert(`S  U  P  E  R\n\nSuccès déverrouillé : "Mon premier pendu"\n\nBien joué !`)
+        end = true;
+        break;
+    } else {
+        alert(`Une erreur s'est produite. Retour au début.`);
+        continue boucle;
+    }
+    }
+    // if ()
+    // mauvaisesLettres.push(lettreUtilisateur);
+    //         alert(`P  E  R  D  U\n\nErreur ${mauvaisesLettres.length}/10 `);
+    //         if (mauvaisesLettres >= 10) {
+    //             if (confirm(`La partie est terminée. Et... vous avez échoué.\n\nRecommencer?`) === true) {
+    //                 location.reload();
+    //             } else {
+    //                 end = true;
+    //                 break;
+    //             }
+    //         }
+
+</script>
+
+
+
+<body>
+    
+</body>
+</html>

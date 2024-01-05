@@ -1,5 +1,6 @@
 <!--  A RETENIR : Redéfinir une variable par un autre type a TOUT LE TEMPS des effets inattendus, undefined machin chose. Ne pas redéfinir une variable integer en string et viçe-versa. -->
-<!-- On peut rajouter un label à une boucle (choiceLoop:) pour pouvoir revenir au début de la boucle depuis n'importe ou avec 'break choiceLoop;' ou 'continue choiceLoop;' -->
+<!-- On peut rajouter un label à une boucle (choiceLoop:) pour pouvoir revenir au début de la boucle depuis n'importe où avec 'break choiceLoop;' ou 'continue choiceLoop;'. Pas réussi à labelliser des if statements en revanche. -->
+<!-- CE CODE A BEAUCOUP TROP DE CONTINUE, IL EST DEGEULASSE. -->
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,69 +14,78 @@
 <script>
 
 
-let fruits = [ 'Mangue', 'Raisin', 'Figue', 'Kiwi' ];
-let choice = "startValue";
-let confirmation = "startValue";
-var secondChoice = "startValue";
-
+let fruits = [ 'Figue','Fraise', 'Rhubarbe', 'Pizza', 'Sauce tomate', 'Yaourt périmé', 'Fromage en spray', 'Isolation phonique' ];
+let choice = 'startValue';
+let confirmation = 'startValue';
+var infiniteChoice = 0;                                                                                                                                                             // infiniteChoice is my terrible way of going back and forth between the 'if' and 'if else' statements, by using it as another condition.
 choiceLoop:
-for (osef = 0, end = false ; end === false ; osef++) {                                                                                                                                = // Boucle pour demander plusieurs fois si le client veut un autre fruit.                                                                                                                             // Label à rappeler avec break; (ou continue; pour les loops.)
-    if ( fruits.length !== 0 && choice === "startValue" || fruits.length !== 0 && choice === "retry" || fruits.length !== 0 && secondChoice === "anotherFruit") {                   // Confirmation qu'on doit répéter les && entre chaque || (machin1 && machin2 || machin1 && machin3)
-        choice = prompt(`Voici la liste de fruits disponibles en vente :\n${fruits.join("   *   ")}\n\nQuel fruit désirez-vous acheter ?`) ;         // beware, loops might outright not load if you declare the same variables two times usign 'let' both times. No error on console too...
+for (osef = 0, end = false ; end === false ; osef++) {                                                                                                                              // Boucle pour demander plusieurs fois si le client veut un autre fruit.                                                                                                                             // Label à rappeler avec break; (ou continue; pour les loops.)
+    if ( fruits.length !== 0 && choice === 'startValue' || fruits.length !== 0 && choice === 'retry' || fruits.length !== 0 && infiniteChoice === 0) {                                                                             // Confirmation qu'on doit répéter les && entre chaque || (machin1 && machin2 || machin1 && machin3)
+        choice = prompt(`Voici la liste de fruits disponibles en vente :\n${fruits.join('   ◊   ')}\n\nQuel fruit désirez-vous acheter ?`) ;                                        // beware, loops might outright not load if you declare the same variables two times usign 'let' both times. No error on console too...
         
-        if (fruits.join(" * ").toLowerCase().includes( choice.toLowerCase() ) === true) {                                                            // pas besoin de préciser includes(choice) === true, le true est sous-entendu. // La méthode .join() est identique à .toString mais permet de séparer les valeurs ave cle caratère de mon choice. Convertir mon array en string est obligatoire pour pouvoir utiiser .toLowerCase(). Sinon erreur "fruits.toLowerCase() is not a function".
-            for (a = 0, stop = 0 ; stop !== 1 ; a++ ) {                                                                                              // index 0 might never be checked if a++ applies immediately rather than after the first loop. To be tested...
-                if (fruits[Number(a)].toLowerCase().includes( choice.toLowerCase() ) === true) {                                                     // Dunno why but variable a isn't recognized as an integer, had to use parseInt() or Number()... // Notice how .length is not a method, but a property (no () parentheses)
+        if (fruits.join(' * ').toLowerCase().includes( choice.toLowerCase() ) === true) {                                                                                           // pas besoin de préciser includes(choice) === true, le true est sous-entendu. // La méthode .join() est identique à .toString mais permet de séparer les valeurs ave cle caratère de mon choice. Convertir mon array en string est obligatoire pour pouvoir utiiser .toLowerCase(). Sinon erreur 'fruits.toLowerCase() is not a function'.
+            for (a = 0, stop = 0 ; stop !== 1 ; a++ ) {                                                                                                                             // Index 0 might never be checked if a++ applies immediately rather than after the first loop. Needs further testing...
+                if (fruits[Number(a)].toLowerCase().includes( choice.toLowerCase() ) === true) {                                                                                    // Dunno why but variable a isn't recognized as an integer, had to use parseInt() or Number()... // Notice how .length is not a method, but a property (no () parentheses)
                     fruits.splice(a, 1);
-                    alert("Merci ! Votre achat a bien été pris en compte !") ;
-                    stop = 1 ;
-                } else if (fruits[Number(a)].toLowerCase().includes( choice.toLowerCase() ) === false) {                                             // OK very weird. An error occurs here when picking Kiwi, it's normal, when the fruit array is spliced, one index always disappears. Therefore by selecting kiwi(index 4) in 'if' parameter, there is no more index 4 for 'if else' to act upon. Problem is this error interrups the loop for some reason. It shouldn't, as else should only be called after unseuccessful ifs. Changing the for loop end condition not to look at the 'a' variable fixed it. It was a weir issur caused by literal/integer mistranslation by javascript.
-                    continue ;                                                                                                                       // has no effect here, it would continue anyway its search for the right index to splice. // MUST NOT use 'continue bouchechoice;' here.
+
+                    if (fruits.length > 0) {
+                        alert('Merci, votre achat a bien été pris en compte.') ;
+                        stop = 1 ;
+                        infiniteChoice = 1;                                        
+                        break;
+                    }
+                    else if (fruits.length === 0) {
+                        let success = new Audio('/resources/sound.mp3');
+                        success.play();
+                        alert(`Succès déverrouillé : "Cambriolage de haut vol."\n\nBien joué !`)
+                        end = true
+                        break;
+                    }
+                } else if (fruits[Number(a)].toLowerCase().includes( choice.toLowerCase() ) === false) {                                                                            // OK very weird. An error occurs here when picking Kiwi, it's normal, when the fruit array is spliced, one index always disappears. Therefore by selecting kiwi(index 4) in 'if' parameter, there is no more index 4 for 'if else' to act upon. Problem is this error interrups the loop for some reason. It shouldn't, as else should only be called after unseuccessful ifs. Changing the for loop end condition not to look at the 'a' variable fixed it. It was a weir issur caused by literal/integer mistranslation by javascript.
+                    continue ;                                                                                                                                                      // This has no effect here, it would continue anyway its search for the right index to splice. // MUST NOT use 'continue bouchechoice;' here.
                 } else {
-                    alert("Une erreur s'est produite dans le calcul de l'index du fruit à supprimer. Retour au début.");
+                    alert(`Une erreur s'est produite dans le calcul de l'index du fruit à supprimer. Retour au début.`);
                     continue choiceLoop;
                 }
             } 
-        } else if (fruits.join(" * ").toLowerCase().includes( choice.toLowerCase() ) === false) {
-            alert("Je ne reconnais pas ce fruit. Veuillez réessayer.");
-            choice = "retry";
+        } else if (fruits.join(' * ').toLowerCase().includes( choice.toLowerCase() ) === false) {
+            alert('Je ne reconnais pas ce fruit. Veuillez réessayer.');
+            choice = 'retry';
             continue choiceLoop;
         } else {
-            alert("Une erreur est survenue. Retour au début.");
+            alert('Une erreur est survenue. Retour au début.');
         }
     
-    } else if (fruits.length !== 0) {                                                                                                                      
+    } else if (fruits.length !== 0 && infiniteChoice === 1) {                                                                                                                      
         confirmation = prompt(`Voulez-vous acheter un autre fruit ? ( [O]ui / [N]on )`) ;
-
         if (confirmation.toLowerCase() === 'oui' || confirmation.toLowerCase() === 'o' || confirmation.toLowerCase() ===  'yes' || confirmation.toLowerCase() === 'y') {
-            secondChoice = "anotherFruit";
+            infiniteChoice = 0;
+            // alert("I am being an annoyance");        // FOR TEST PURPOSES
             continue choiceLoop;
         } else if ( confirmation.toLowerCase() === 'non' || confirmation.toLowerCase() === 'n' ||confirmation.toLowerCase() === 'no') {
-            alert("Merci de votre achat. Passez une bonne journée !");
+            alert('Merci de votre achat. Passez une bonne journée !');
             end = true;
         } else {
             for (confirmation, b=0 ; confirmation.toLowerCase() !== 'oui' || confirmation.toLowerCase() !== 'o' || confirmation.toLowerCase() !==  'yes' || confirmation.toLowerCase() !== 'y' || confirmation.toLowerCase() !== 'non' || confirmation.toLowerCase() !== 'n' || confirmation.toLowerCase() !== 'no'; b++ ) {
-                let confirmation = prompt("Je n'ai pas compris votre réponse. Voulez-vous acheter un autre fruit ?  ( [O]ui / [N]on )");
+                confirmation = prompt(`Je n'ai pas compris votre réponse. Voulez-vous acheter un autre fruit ?  ( [O]ui / [N]on )`);
                 if (confirmation.toLowerCase() === 'oui' || confirmation.toLowerCase() === 'o' || confirmation.toLowerCase() ===  'yes' || confirmation.toLowerCase() === 'y') {
-                    secondChoice = "anotherFruit";
+                    infiniteChoice = 0;
                     continue choiceLoop;
                 } else if ( confirmation.toLowerCase() === 'non' || confirmation.toLowerCase() === 'n' ||confirmation.toLowerCase() === 'no') {
-                    alert("Merci de votre achat. Passez une bonne journée !");
+                    alert('Merci de votre achat. Passez une bonne journée !');
                     end = true;
+                    break;
                 }
             }
         }
-    } else if (fruits.length === 0) {
-        alert(`Succès déverrouillé : "Vider entièrement l'étal"\n\n Bien joué !`)
-        break;
-    } else {
-        alert("Une erreur est survenue. Veuillez rafraîchir la page.");
-    }
-    // alert("END FOR."); // FOR TEST PURPOSES
 
+    } else {
+        alert('Une erreur est survenue. Veuillez rafraîchir la page.');
+    }
+    // alert('END FOR.'); // FOR TEST PURPOSES
 }
 
-// alert("END END"); // FOR TEST PURPOSES
+// alert('END END'); // FOR TEST PURPOSES
 
 
 
