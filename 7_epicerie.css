@@ -1,0 +1,36 @@
+* {
+    margin: 0 auto;
+    font-family: calibri;
+    background: rgb(164, 197, 201);
+}
+
+p {
+    stroke: aqua;
+    color : white;
+    font-size: 90px;
+    text-align :center;
+    background: linear-gradient(90deg, rgb(185, 128, 208) 0%, rgb(92, 123, 108) 52%, rgb(81, 108, 113) 100%);
+}
+
+.theButton {
+    display: flex;
+    justify-content: center;
+    margin-top: 10em;
+}
+
+button {
+    background: linear-gradient(90deg, rgba(150,0,209,1) 0%, rgba(9,121,65,1) 52%, rgba(0,212,255,1) 100%);
+    color : white;
+    font-size: 30px;
+    border-radius : 5px;
+    padding : 0.8em;
+    line-height: 0;
+}
+
+button:hover {
+    background: linear-gradient(90deg, rgb(165, 88, 196) 0%, rgb(76, 123, 100) 52%, rgb(80, 113, 120) 100%);
+}
+
+button:active {
+    background: linear-gradient(90deg, rgb(185, 139, 203) 0%, rgb(97, 116, 107) 52%, rgb(108, 125, 128) 100%);
+}

@@ -1,0 +1,41 @@
+<!-- When a string says something like "function methodName() { [native code]", then you probably forgot the parentheses in your method (e.g. toLowerCase => toLowerCase() )-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+let word = ['s', 'u', 'p', 'e', 'r', 'r', 'r'];
+let wrong = [];
+let finalWord = ['_','_','_','_','_'];
+
+while (word.length > 0 && wrong.length < 10) {             // tant qu'il y a des lettres à trouver et dix tentatives n'ont pas été échues.
+    let myLetter = prompt("Veuillez taper la lettre que vous souhaitez vérifier.").toLowerCase();           //contiendra la lettre tapée
+    let currentIndex = word.indexOf(myLetter)               // contiendra la chiffre correspondant à la lettre tapée
+    if (currentIndex >= 0  ) {
+        alert(`Bravo ! ${myLetter.toUpperCase()} fait bien partie des lettres recherchées.`);
+        while (word.indexOf(myLetter) >= 0 ) {  
+            finalWord.splice(myLetter, 1, myLetter);
+            word.splice(myLetter, 1,);
+            alert(finalWord);
+        }
+    }
+    else if (currentIndex < 0) {            // si l'index renvosyé par indexOf est -1, c'est forcément que le string checké ne correspond pas à un index du tableau.
+        wrong.push(myLetter);
+        alert("Mauvaise lettre.")
+    }
+}
+
+word == [] ?  alert(`La partie est terminée... Et vous avez gagné.\n\n${finalWord.join(" ")}`) : alert(`La partie est terminée... Et vous avez perdu.\n\n${finalWord.join(" ")}`)
+
+
+</script>
+
+<body>
+    
+</body>
+</html>
