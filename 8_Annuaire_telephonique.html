@@ -1,0 +1,152 @@
+<!-- Utiliser JSON.stringify() à chaque fois qu'une variable refuse une méthode et renvoie "x is not a function". En effet, les méthodes ne peuvent s'appliquer qu'à des string litterals.-->
+<!-- && et || ne fonctionnent pas pareil du tout. || peut différencier des déclarations entières mais aussi des simples propriétés (e.g. "a" || "b" || "c"), && ne combine que des déclarations entre elles (e.g. var == "a" && var == "b" || var == "c" && var == "d"). Ici c'est A et B OU C et D. && a la priorité sur ||. -->
+<!--  return; to quit a function -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+
+///////////////////////// MUST STAY ON TOP ///////////////////////////
+var annuaire = {    // Only composite words need to be specified as literals but it might be better practice to makes them all strings to avoid unwelcome surprises when editing entries.
+    'Allô Pizza': '04 04 04 04 04',
+    David: '07 77 77 77 77',
+    'Jean-Jacques': '06 12 34 56 78',
+    "Le Parlement": '05 39 83 23 72',
+    'Marie-Faustine': '05 05 05 05 05',
+    Patricia: '06 66 66 66 66',
+    'Père Noël': '36 30',
+    Pompiers: '18',
+    'SOS médecins': '123',
+};
+
+// I cannot put the following line in the menu() function as the loopback to the menu would cause a redeclaration of "let".
+let menuChoice
+
+while (menuChoice !== "Q" || "q") {       // This can't be a function as every function is gonna need a common way for cles to be updated every time when looping back to the menu. And since redeclaring the cles variable isn't an option (since you cannot predict what option the user will pick from the menu, one has to declare cles only once and do it inside a loop menu so it isn't isolated from other functions by (non-)virtue of being in a function menu.)
+    var cles = Object.keys(annuaire);      ////////////// A retenir. Must be positioned here and only once so the list of entries refreshes after every function/edit.   
+  
+    menuChoice = prompt(`ANNUAIRE\n\n\nVoici la liste des personnes inscrites dans l'annuaire :\n\n${cles.join(' 🤣🤣🤣 ')}\n\n\nVeuillez choisir parmi les options suivantes:\n\n1. Rechercher un numéro de téléphone.\n2. Ajouter un numéro de téléphone à l'annuaire\n3. Supprimer une entrée de l'annuaire\nQ. Quitter`);
+
+    /* cles = JSON.stringify(cles).toLowerCase();      // After I have shown the names, I can convert them to lowercase so they can be processed more easily.*/
+        
+
+    if (menuChoice === "1") {
+        searchNum();
+    }
+    else if (menuChoice === "2") {
+        addNum();
+    }
+    else if (menuChoice === "3") {
+        remNum();
+    }
+    else if (menuChoice === "Q" || "q") {
+        break;
+    }
+    else {
+        alert("Choix invalide. Veuillez réessayer.");
+    }
+}
+
+function searchNum() {
+    let choix = prompt(`Veuillez saisir le prénom de la personne à rechercher ci-dessous:`)
+    if (choix) {        // s'il y a bien du texte dans la variable choix, si choix est truthy.
+        if (cles.includes(choix) === true)       // Si l'annuaire contient bien notre sélection.  (Cette condition ne fonctionne pas avec la variable annuaire pour x raison.)
+            alert(`Le numéro de téléphone de ${choix} est ${annuaire[choix]}.`);        // We use the brackets to call one property of an object. Periods just don't work well for custom object properties. We use indexOf to get the key of said property, just like arrays.
+        else {
+            let confirm3 = confirm(`Je ne trouve pas de "${choix}". Souhaitez-vous réessayer ?`);        // We use the brackets to call one property of an object. Periods just don't work well for custom object properties. We use indexOf to get the key of said property, just like arrays.
+            if (confirm3 == true) {
+                searchNum();
+            }
+            else {
+                alert("OK, retour au menu principal.")
+                menu();               // retour au menu home.
+            }
+        }
+    }
+    else {
+        alert("Erreur : Veuillez rentrer un prénom.");
+        searchNum()
+    }
+    return; // return to home menu.
+}
+
+function addNum(){
+let surname = prompt(`Veuillez saisir le prénom de la personne à ajouter ci-dessous:`)
+    if (surname) {
+        let confirm1 = confirm(`Vous avez tapé "${surname}". Est-ce correct ?`)
+        if (confirm1 == true) {
+            let phoneNum = prompt(`Veuillez taper le numéro de téléphone correspondant à cette personne`) ;
+            let confirm2 = confirm(`Vous avez tapé "${phoneNum}". Est-ce correct ?`);
+            if (confirm2 === true) {
+                (annuaire[surname] = phoneNum); // Pour ajouter une nouvelle propriété à mon annuaire, je fais comme si elle existait déjà et je l'appelle [surname] pour l'assigner avec phoneNum. (pour transformer la variable surname en key pour ma propritété, je suis obligé d'utiliser les crochets.)
+                    debug(); // Making sure my new entry has been added correctly.
+                    alert("OK!")
+                    return; // retour au menu après fin
+            }
+            else {
+                alert("OK, retour au début.")
+                addNum();               // retour au début.
+            }
+        }
+        else if (confirm != true) {
+            alert("OK, retour au début.")
+            addNum();               // retour au début.
+        }
+    }   
+    else {
+        alert("Veuillez taper un nom.")
+        addNum();               // retour au début.
+    }
+}
+
+function remNum() {         
+    let remChoice = prompt(`Voici la liste des personnes inscrites dans l'annuaire :\n\n${cles.join(' 🤣🤣🤣 ')}\n\n\nVeuillez choisir une personne à supprimer.`);
+    if (cles.includes(remChoice) === true) {
+        let confirm4 = confirm(`Vous avez tapé "${remChoice}". Souhaitez-vous réellement le supprimer?`);
+        if (confirm4 === true) {
+            delete annuaire[remChoice]; ////////////: CA MARCHE PASSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
+            console.log(annuaire);
+            alert("Supprimé(e) !");
+            return; // to quit the function (without any return value as it is not needed here.)
+        } else if (confirm4 !== true) {
+        alert("OK, retour au début.")
+        remNum();               // retour au début.
+        }
+    }
+    else {
+        alert(`Je ne reconnais pas ce prénom. Veuillez réessayer.`);
+        remNum();
+    }
+}
+
+function debug() {
+    ////////////////////////////////////////////////////////// Méthode for - in pour l'affichage des propriétés (clés/prénoms) de l'annuaire ne fonctionnera que dans un console log
+        console.log(`Voici la liste des membres de l'annuaire :`)
+    for (cle in annuaire) {
+        console.log(`${cle} ===> ${annuaire[cle]}`)
+    }
+    //////////////////////////////////////////////////////////
+}
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<body>
+    
+</body>
+</html>

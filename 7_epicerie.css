@@ -20,7 +20,7 @@ p {
 
 button {
     background: linear-gradient(90deg, rgba(150,0,209,1) 0%, rgba(9,121,65,1) 52%, rgba(0,212,255,1) 100%);
-    color : white;
+    color : linear-gradient(90deg, rgba(0,212,255,1) 0%, rgba(183,0,255,1) 50%, rgba(0,255,128,1) 100%);
     font-size: 30px;
     border-radius : 5px;
     padding : 0.8em;
@@ -29,8 +29,10 @@ button {
 
 button:hover {
     background: linear-gradient(90deg, rgb(165, 88, 196) 0%, rgb(76, 123, 100) 52%, rgb(80, 113, 120) 100%);
+    color : linear-gradient(90deg, rgb(128, 234, 255) 0%, rgb(218, 125, 255) 50%, rgb(121, 255, 188) 100%);
 }
 
 button:active {
     background: linear-gradient(90deg, rgb(185, 139, 203) 0%, rgb(97, 116, 107) 52%, rgb(108, 125, 128) 100%);
+    color : linear-gradient(90deg, rgb(98, 140, 149) 0%, rgb(151, 120, 164) 50%, rgb(122, 155, 139) 100%);
 }
