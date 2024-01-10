@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!-- Objects are sometimes called associative arrays -->
+<!-- You can type "ObjectName." inconsole (with the dot_ to list its prototype methods (which are actually also objects). -->
+<!-- you must store classes in separate js filesfor them to work correctly.  Those class files will be forever reusable sô you may wanna save them in à folder somewhere-->
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+<script>
+
+const person = {        
+  name: {
+    first: "Bob",   // Si je veux mettre plusiers valeurs dans cettre propriété (plusieurs prénoms), je devrai changer la valeur en array d'abord, ou refaire une objet enfant. Ici, les objets étant forcément des key-value pairs, l'array sera de rigueur pour une liste de prénoms.
+    last: "Smith" },
+  age: 32,
+  bio: function () {
+    console.log(`${this.name[0]} ${this.name[1]} is ${this.age} years old.`);
+  },
+  introduceSelf: function () {
+    console.log(`Hi! I'm ${this.name[0]}.`);
+  }
+}
+
+function logProperty(propertyName) { // declaring a function and the propertyName variable
+  console.log(person[propertyName]); // the propertyName variable accesses the propertyName prototypical object inside the person object. This can only be done with brackets because we're storing the result in a "propertyNme" variable apparently.
+}
+
+person["name"]["last"] = "Razowski"; // setting (updating) the "last" object.
+
+console.log(person["name"]["last"]); //accessing a child property with brackets
+
+logProperty("name");
+// ["Bob", "Smith"]
+logProperty("age");
+// 32
+
+
+// Adding new member (key/value object) to my person object
+person["eyes"] = "hazel";
+// Testing those new members
+alert(JSON.stringify(person));
+// Adding new member (key/value object) ? to my person object. Even if it's a method, I could have written it directly inside my person object but decided to update person with this line instead.
+person.farewell = function () { // notice how the function is created more simply function(){}
+  console.log("Bye everybody!");
+};
+// Testing this new method
+person.farewell();
+
+</script>
+
+</body>
+
+
+</html>

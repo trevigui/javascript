@@ -13,21 +13,24 @@ let word = ['l', 'u', 'i', 'g', 'i'];           // problème avec le i
 let wrong = [];
 let finalWord = ['_','_','_','_','_'];
 
-while (word.length > 0 && wrong.length < 10) {             // tant qu'il y a des lettres à trouver et dix tentatives n'ont pas été échues.
-    let myLetter = prompt("Veuillez taper la lettre que vous souhaitez vérifier.").toLowerCase();           //contiendra la lettre tapée
-    let currentIndex = word.indexOf(myLetter)               // contiendra la chiffre correspondant à la lettre tapée
+while (word.length != 0 && wrong.length < 10) {             // tant qu'il y a des lettres à trouver et dix tentatives n'ont pas été échues.
+    let myLetter = prompt("Veuillez taper la lettre que vous souhaitez vérifier.").toLowerCase();           //contiendra la lettre tapée.
+    let currentIndex = word.indexOf(myLetter);               // contiendra la chiffre correspondant à la lettre tapée.
     if (currentIndex >= 0  ) {
         alert(`Bravo ! ${myLetter.toUpperCase()} fait bien partie des lettres recherchées.`);
-        while (word.indexOf(myLetter) >= 0 ) {  
-            finalWord.splice(currentIndex, 1, myLetter);
-            word.splice(myLetter, 1,);
+        while (currentIndex >= 0 ) {
+            finalWord.splice(currentIndex, 1, myLetter); // y a un problème
+            word.splice(currentIndex, 1, );
             alert(finalWord);
+            currentIndex = word.indexOf(myLetter); // Très important, je revérifie s'il existe encore une occurence de la même lettre après l'avoir remplacé une fois
+            alert(currentIndex+"\t\t"+word); // DEBUG
         }
     }
-    else if (currentIndex < 0) {            // si l'index renvosyé par indexOf est -1, c'est forcément que le string checké ne correspond pas à un index du tableau.
+    else if (currentIndex < 0) {            // si l'index renvoyé par indexOf est -1, ça veut toujorus dire que le string checké ne correspond pas à un index existant dans le tableau.
         wrong.push(myLetter);
         alert("Mauvaise lettre.")
     }
+
 }
 
 word == [] ?  alert(`La partie est terminée... Et vous avez gagné.\n\n${finalWord.join(" ")}`) : alert(`La partie est terminée... Et vous avez perdu.\n\n${finalWord.join(" ")}`)

@@ -1,6 +1,9 @@
 <!-- boucle for = (initialisation des variabless avec ou sans let ; condition ; incrémentation) -->
 <!-- La boucle while est plus simple mais ne permet pas de garder le fil des incrémentations. Si incrémentaiton il doit y avoir, utiliser for. -->
 <!-- Attention, la méthode .includes() n'est pas la méthode .contains(), qui, elle, ne fonctionne pas. -->
+<!-- Dans un bon site, le script se met dans le body, tout en bas, pour laisser la page se charger entièrement avant de lancer le calcul du javascript ; ou depuis un fichier extérieur avec defer="true"  dans la balise pour le même effet. De plus le navigateur pourra le mettre en cache après le premier chargement. -->
+<!-- Dans un bloc {} (hors fonctions) les déclarations de variables sont cantonnées au bloc, dans une fonction(){} elles sont cantonnées au fonction (même var), en dehors, elles sont toutes globales (même let). Toute variable non déclarée par un "let", "var" ou "const" sera prise en compte par défaut comme une variable globale mais c'est une erreur de ne pas mettre de mot devant. Tester le site en "JS strict mode" -->
+<!-- On proscrit "with" qui ralentit tout. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

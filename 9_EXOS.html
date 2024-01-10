@@ -1,0 +1,77 @@
+<!-- Exercice Prog orientée Objet - instanciation
+Vous allez créer une classe Appele Etudiant qui aura pour paramètres(age), a l’interieur il y aura juste une
+ super variable(qui rappelle l’objet instancie) qui rappellera le paramètre pointé précédemme t et lui attribuera la
+ valeur age, et un affichage en alert de ‘Etudiant instancié’.
+Hors de cette classe vous allez créer deux variables  etudiant1, et etudiant2, en instanciant
+une nouvelle classe Etudiant qui aura pour paramètre un age en nombre.
+Ensuite afficher en alert le nom ainsi que l’age de l’étudiant 1. -->
+
+<!-- Attention la méthode constructor de classe n'a rien à voir avec le prototype constructor. -->
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- ON NE PEUT PAS CREER DE CLASSES DANS UNE BALISE SCRIPT APPAREMMENT, FAIRE UNE FONCTION. -->
+<!-- TUTO TOTU TUOT TOUT https://playcode.io/javascript/classes -->
+<!--  En fait il faut voir les classes commes des fonctions plus faciles à utiliser car le contenu répétitif peut être remplacé automatiquement. Théoriqumeent on peut faire la même chose avec une fonction. Mais il est recommandé de faire la distinction et de n'utiliser que les classes comme modèles. -->
+<script> 
+
+//////////////////////////////////////////////////////////
+//////////////////// DECLARATION /////////////////////////
+//////////////////////////////////////////////////////////
+
+class Etudiant {                        // avec une fonction, on met les paramètres ici en parenthèses.
+    constructor(name, age) {            // avec la méthode constructor() on met les paramètres plutôt ici en parenthèses. Le constructeur de classe permet de spécifier les propriétés variables (le modèle) de la classe qui seront alterées lors de l'instanciation. avec une classe,
+        this.age = age;                 // l'opérateur this est à prendre comme une variable.
+        this.name = name;               // Utiliser le point-virgule, pas la virgule
+        alert ("etudiant instancié")    // le message se produire à chaque fois que la classe sera appelée. A noter qu'à cette ligne l'étudiant n'est pas encore réellement instancié mais en fait si, au moment où l'alerte s'affichera, c'est que la classe aura été appelée/instanciée.
+    }
+} 
+
+//////////////////////////////////////////////////////////
+//////////////////// INSTANCIATION ///////////////////////
+//////////////////////////////////////////////////////////
+
+let etudiant1 = new Etudiant("john", 18);           // Attention la syntaxe est très finnicky
+let etudiant2 = new Etudiant("michel", 25);         // On appelle la classe ici. Elle affichera le message pour chaque étudiant.
+
+alert(etudiant1);
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<body>
+    
+</body>
+</html>

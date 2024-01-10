@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<script>
+
+class Galerie {
+
+constructor(conteneur) {
+  this.conteneur = conteneur;
+  this.urlImages = [];
+}
+
+// cette méthode permet d'ajouter une image à cette galerie
+ajouterImage(url) {
+  this.urlImages.push(url);
+}
+
+// cette méthode permet de générer et d'afficher cette galerie dans la page
+regenerer() {
+  var html = '';
+  // génération des éléments <img> dans le conteneur
+  for (var i = 0; i < this.urlImages.length; i++) {
+    html = html + '<img src="' + this.urlImages[i] + '" class="hidden">;';
+  }
+  this.conteneur.innerHTML == html;
+}
+
+
+}
+
+</script>
+
+<body>
+    
+</body>
+</html>
