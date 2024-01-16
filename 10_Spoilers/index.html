@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>々々々々々々々</title>
+    <link rel="stylesheet" href="/10_Spoilers/styles.css">
+</head>
+<body>
+    <section class="mySection">
+        <!-- REMOVING A CLASS -->
+        <p id="premier">Title T</p>
+        <p id="second" class="hidden">Ce texte devait être caché mais non en fait.</p>
+    </section>  
+    <section class="mySection" id="section2">
+        <!-- ADDING A CLASS -->
+        <p>C'est l'histoire d'un garçon troublé car son ours en peluche a disparu ;</p>
+        <p class="spoiler"> Il l'a finalement retrouvé.</p>
+        <p class="spoiler"> Ouf !</p>
+    </section> 
+    <section class="mySection">  
+        <!-- HIGHLIGHTING TEXT -->
+        <p class="myBlerb">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero dicta non magnam. Illum cupiditate alias porro exercitationem! Nobis aliquam maiores tempora! Laborum reiciendis est adipisci blanditiis, consequuntur id dolor totam.</p>
+        <p class="myBlerb">Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero dicta non magnam. Illum cupiditate alias porro exercitationem! Nobis aliquam maiores tempora! Laborum reiciendis est adipisci blanditiis, consequuntur id dolor totam.</p>
+    </section>
+    <section class="mySection" id="section4">  
+        <!-- LISTING PRODUCTS -->
+        <ul id="btnSection">
+            <li><a class="btn" onclick="displayMySelection('all')">View All</a></li>
+            <li><a class="btn" onclick="displayMySelection('appleServices')">Apple Services</a></li>
+            <li><a class="btn" onclick="displayMySelection('iDevices')">iDevices</a></li>
+            <li><a class="btn" onclick="displayMySelection('extras')">Extras</a></li>
+            <li><a class="btn" onclick="displayMySelection('iExtras')">iExtras</a></li>
+        </ul>
+        <ul class="objects">
+            <h2>Résultats :</h2>
+            <!-- All item classes have display none by default -->
+            <li class="item hidden iDevices">iPhone</li> 
+            <li class="item hidden iDevices">iPad</li>
+            <li class="item hidden iDevices">iPod</li>
+            <li class="item hidden iDevices">iCloud</li>
+            <li class="item hidden appleServices">Apple Care</li>
+            <li class="item hidden appleServices">Apple Don't Care</li>
+            <li class="item hidden appleServices">Apple Music</li>
+            <li class="item hidden appleServices">Apple TV</li>
+            <li class="item hidden appleServices">Apple Gnuies Bar</li>
+            <li class="item hidden appleServices">Apple News Subscription</li>
+            <li class="item hidden iExtras">Apple-ications</li>
+            <li class="item hidden iExtras">Complications</li>
+            <li class="item hidden iExtras">Vindication</li>
+            <li class="item hidden iExtras">Apple Fritter</li>
+            <li class="item hidden iExtras">Appalachian mountains</li>
+            <li class="item hidden extras">iCarly</li>
+            <li class="item hidden extras">iBuprofen</li>
+        </ul>
+
+    </section>
+
+
+      
+
+    <script src="/10_Spoilers/script.js"></script>
+</body>
+</html>

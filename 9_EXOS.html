@@ -29,7 +29,10 @@ class Etudiant {                        // avec une fonction, on met les paramè
     constructor(name, age) {            // avec la méthode constructor() on met les paramètres plutôt ici en parenthèses. Le constructeur de classe permet de spécifier les propriétés variables (le modèle) de la classe qui seront alterées lors de l'instanciation. avec une classe,
         this.age = age;                 // l'opérateur this est à prendre comme une variable.
         this.name = name;               // Utiliser le point-virgule, pas la virgule
-        alert ("etudiant instancié")    // le message se produire à chaque fois que la classe sera appelée. A noter qu'à cette ligne l'étudiant n'est pas encore réellement instancié mais en fait si, au moment où l'alerte s'affichera, c'est que la classe aura été appelée/instanciée.
+    }
+
+    methodeObligatoire() {
+        alert (`etudiant ${name} instancié !`)    // le message se produire à chaque fois que la méthode de la classe sera appelée. A noter qu'à cette ligne l'étudiant n'est pas encore réellement instancié mais en fait si, au moment où l'alerte s'affichera, c'est que la classe aura été appelée/instanciée.
     }
 } 
 
@@ -40,7 +43,7 @@ class Etudiant {                        // avec une fonction, on met les paramè
 let etudiant1 = new Etudiant("john", 18);           // Attention la syntaxe est très finnicky
 let etudiant2 = new Etudiant("michel", 25);         // On appelle la classe ici. Elle affichera le message pour chaque étudiant.
 
-alert(etudiant1);
+alert(etudiant1,etudiant2);
 
 </script>
 

@@ -9,32 +9,49 @@
 </head>
 
 <script>
-let word = ['l', 'u', 'i', 'g', 'i'];           // problème avec le i
+let immutableWord = ['l', 'u', 'i', 'g', 'i']; // Will be used as a reference by the program
+let variableWord = immutableWord;  // Will be used to check if some letters remain after one pass. Necessary variable if I want to implement the finalWord variable.
 let wrong = [];
+let wrongCount = 0;
 let finalWord = ['_','_','_','_','_'];
+let currentIndex;                       // just declaring it here to avoid a redeclaration and the headache it would cause.
+let myLetter = ""                       // just declaring it here to avoid a redeclaration and the headache it would cause.
+while (variableWord.join() != ",,,," && wrong.length < 10) {             // tant qu'il y a des lettres à trouver et dix tentatives n'ont pas été échues.
+    myLetter = prompt("Veuillez taper la lettre que vous souhaitez vérifier.").toLowerCase();           //contiendra la lettre tapée.
+    while (myLetter === "") {
+        myLetter = prompt("Merci de saisir une lettre dans l'invite.").toLowerCase(); 
+    }
 
-while (word.length != 0 && wrong.length < 10) {             // tant qu'il y a des lettres à trouver et dix tentatives n'ont pas été échues.
-    let myLetter = prompt("Veuillez taper la lettre que vous souhaitez vérifier.").toLowerCase();           //contiendra la lettre tapée.
-    let currentIndex = word.indexOf(myLetter);               // contiendra la chiffre correspondant à la lettre tapée.
-    if (currentIndex >= 0  ) {
-        alert(`Bravo ! ${myLetter.toUpperCase()} fait bien partie des lettres recherchées.`);
-        while (currentIndex >= 0 ) {
+    currentIndex = immutableWord.indexOf(myLetter);               // contiendra la chiffre correspondant à la lettre tapée. //seul ici on référencera notre immutableWord, car si on est retrounée au début, c'est forcément qu'il ne reste plus d'occurence d'une lettre multiple.
+    // alert(currentIndex); // DEBUG, This shows that only one letter out of multiple "i"s is selected.
+    if (currentIndex > -1) { // because -1 is the value given when there is no value found by the indexOf() method, aka, no more myLetter occurences remain.
+        alert(`Bravo ! ${myLetter.toUpperCase()} fait bien partie des lettres recherchées.`); // Adding an unnecessary if and the alert in it because I don't want the alert to be in the while and be repeated at every identical letter (i) splice iteration;
+        while (currentIndex > -1) {
             finalWord.splice(currentIndex, 1, myLetter); // y a un problème
-            word.splice(currentIndex, 1, );
+            variableWord.splice(currentIndex, 1, ""); // Il faut remplacer la letter par une non lettre que l'utilisateur ne tapera pas mais garder l'espace qu'elle occupait pour ne pas décaler les index.
             alert(finalWord);
-            currentIndex = word.indexOf(myLetter); // Très important, je revérifie s'il existe encore une occurence de la même lettre après l'avoir remplacé une fois
-            alert(currentIndex+"\t\t"+word); // DEBUG
+            currentIndex = variableWord.indexOf(myLetter); // Très important, je revérifie s'il existe encore une occurence de la même lettre après l'avoir remplacé une fois
+            // alert(currentIndex+"\t\t"+variableWord); // DEBUG
+            // alert(variableWord) // DEBUG
         }
     }
     else if (currentIndex < 0) {            // si l'index renvoyé par indexOf est -1, ça veut toujorus dire que le string checké ne correspond pas à un index existant dans le tableau.
         wrong.push(myLetter);
-        alert("Mauvaise lettre.")
+        wrongCount++
+        alert(`Mauvaise lettre.\nEssai ${wrongCount}/10 `)
     }
 
 }
 
-word == [] ?  alert(`La partie est terminée... Et vous avez gagné.\n\n${finalWord.join(" ")}`) : alert(`La partie est terminée... Et vous avez perdu.\n\n${finalWord.join(" ")}`)
+variableWord.join() == ",,,," ?  alert(`La partie est terminée... Et vous avez gagné.\n\n\n\n${found()}`) : alert(`La partie est terminée... Et vous avez perdu.\n\n${found()}`);
+// not particularly pretty that condition. Oh well...
 
+/////////////////////////////////////////////////////
+///////////////////// FONCTIONS /////////////////////
+/////////////////////////////////////////////////////
+function found() {
+  return `Lettres trouvées : ${finalWord.join(" ")}` // Don't forget to explicitly return this line, otherwise it will return undefined
+}
 
 </script>
 
