@@ -1,3 +1,4 @@
 {
-    "dotnetAcquisitionExtension.enableTelemetry": false
+    "dotnetAcquisitionExtension.enableTelemetry": false,
+    "quokka.automaticRestart": true
 }

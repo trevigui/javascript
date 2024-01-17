@@ -1,0 +1,110 @@
+<!-- The .append() method is better than .appendChild() because it allows appending Elements as children BUT ALSO strings. appendChild doesn't allow that! -->
+<!-- textContent will show everything as accuratelly as possible (even display:none text, even spaces and tabulations.). innerText will only show visible text, without spaces and/or formatting. -->
+
+<!-- learn more : destructuring, spread operator (...),  -->
+
+<!-- !!! Never forget your index when querying the DOM or gettingElementsByWhatever -->
+<!-- !!! Always always always type the name of the variable that contains your DOM getElement query in the console then press Enter. This allows you to make sure the variable is querying the right thing. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+*{
+    font-family: 'Calibri';
+}
+.btn {
+    background-color: #4CAF50; /* Green */
+    color:white;
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    border : solid 1px greenyellow;
+}
+.btn:hover{
+    background-color: #79b17b; /* Green */
+    border : solid 1px rgb(222, 255, 173);
+}
+.btn:active{
+    background-color: #1eb723; /* Green */
+    border : solid 1px rgb(120, 177, 34);
+}
+input {
+    background-color: #ffffff; /* Green */
+    color:lightblue;
+    border-radius: 5px;
+    border : solid 1px greenyellow;
+    color:black;
+}
+
+
+</style>
+<body>
+    <h1>Calculatrice</h1>
+    <form action="" method="get">
+        <input name="number1" type="text" placeholder="Veuillez taper un nombre.">
+        <!-- Can't seem to be able to put anonymous, closured, or arrow functions directly in the HTML... -->
+        <button id="plus" class="btn">+</button>
+        <button id="minus" class="btn">-</button>
+        <button id="slash" class="btn">/</button>
+        <button id="asterisk" class="btn">*</button>
+        <input name="number2" type="text" placeholder="Veuillez taper un nombre.">
+        <span id="outcome">= ⁉️⁉️⁉️</span> <!-- Using span rather than p to keep this inline with the rest, rather than block-level.-->
+    </form>
+<script>
+
+let operator;
+document.getElementById('plus').addEventListener("click", selectSign);
+document.getElementById('minus').addEventListener("click", selectSign);
+document.getElementById('slash').addEventListener("click", selectSign);
+document.getElementById('asterisk').addEventListener("click", selectSign);
+
+function selectSign() {
+    // Color selected button
+    const colors = ['purple', 'green', 'blue', 'pink', 'darkolivegreen', "cyan", "lemonchiffon", "lightseagreen","lavenderblush"];
+    event.target.style.backgroundColor = colors[[Math.round(Math.random(0, 8)*10)]];
+    // Using content of button (e.g. +) and assigning it to an 'operator' variable.
+    operator = event.currentTarget.innerHTML; // making the operator depend on the content of the button (currentTarget) that was clicked on (event).
+
+                    // console.log(event.target);   // DEBUG
+                    // console.log(event);          // DEBUG
+                    console.log(operator)        // DEBUG
+
+    let result;
+    let number1 = parseFloat(document.getElementsByName('number1')[0].value); //value helps get the value="" attribute directly !! But do NOT forget [0], or else you'll get null. // Notice that you can nest a prompt or DOM elemnt inside parseFloat(). Typing prompt().parseFloat() is incorrect.
+    let number2 = parseFloat(document.getElementsByName('number2')[0].value); // parseFloat will integrate decimals and ignore letters and commas.
+
+    switch(operator) { // checks what the value of operator is in order to pick the appropriate case t play out.
+        case '+':
+            result = number1 + number2;
+            document.getElementById('outcome').innerHTML = `= ${result}`; //replacing the current text of span with .innerHTML = XYZ rather than appending with .append(). Notice that innerHTML is an object that contains the replacement values after the assignment operator while .appen() is a method that contains the replacement values within it's parentheses.
+            break;
+        case '-':
+            result = number1 - number2;
+            document.getElementById('outcome').innerHTML = `= ${result}`;
+            break;
+
+        case '*':
+            result = number1 * number2;
+            document.getElementById('outcome').innerHTML = `= ${result}`;
+            break;
+
+        case '/':
+            result = number1 / number2;
+            document.getElementById('outcome').innerHTML = `= ${result}`;
+            break;
+
+        default:
+            console.log('Invalid operator');
+            break;
+    }
+    event.preventDefault(); // to prevent page refresh on onclick function call.
+}
+
+</script>
+</body>
+</html>
+  
