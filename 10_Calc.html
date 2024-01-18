@@ -5,6 +5,8 @@
 
 <!-- !!! Never forget your index when querying the DOM or gettingElementsByWhatever -->
 <!-- !!! Always always always type the name of the variable that contains your DOM getElement query in the console then press Enter. This allows you to make sure the variable is querying the right thing. -->
+<!-- on peut ajouter required ou hidden à nos balises html-->
+<!-- event en jx est souvent écrit "e" tout simplement. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -57,7 +59,7 @@ input {
 <script>
 
 let operator;
-document.getElementById('plus').addEventListener("click", selectSign);
+document.getElementById('plus').addEventListener("click", selectSign); // Sinon on peut directment mettre le onclick sur le HTML.
 document.getElementById('minus').addEventListener("click", selectSign);
 document.getElementById('slash').addEventListener("click", selectSign);
 document.getElementById('asterisk').addEventListener("click", selectSign);

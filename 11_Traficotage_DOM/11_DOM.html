@@ -1,7 +1,17 @@
 <!-- SHIFT + CTRL + K to get rid of a line -->
 <!-- CTRL + K, then Q to start Quokka -->
+<!-- Select word then CTRL + D for += next word. SHIFT+CTRL+L to select all -->
 <!-- Select words then push quote key to quote around whole words -->
 <!-- Most of the time it is entirely useless to use .createTextNode() as html tags always have text nodes preincluded when created.  -->
+<!-- middle click select -->
+<!-- CTRL+P to open file -->
+<!-- CTRL SHIFT P > to open Palette -->
+<!-- .queryselector() selects the nearest below. .closest() selects the nearest above (?)-->
+<!-- nth CSS -->
+<!-- When using getElementsByXYZ, what you're getting is a collection, NOT an array, i you want to use the foreach() method on it (easier than for of loop), you need to do something like this : Array.from(document.getElementsByClassname('maClasse')) to convert it first before applying foreach(). -->
+<!-- balises orphelines/autofermantes : <area/>, <base/>, <br/>, <col/>, <embed/>, <hr/>, <img/>, <input/>, <keygen/>, <link/>, <meta/>, <param/>, <source/>, <track/>, <wbr/>. -->
+<!-- Attention, les getElementByXYZ et querySelectorAll enregistrent les queries dans une collection, pas un array. On doit appeler un élément avec [0] par exemple, mais on ne peut pas utiliser .foreach(document.getElementByXYZ('XYZ'), il faut d'abord convertir la collection en array  : .foreach(Array.from(document.getElementByXYZ('XYZ'))) -->
+<!-- Styles applied in HTML take priority over the CSS styles. -->
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,17 +20,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<style>
+    div {
+        padding : 0;
+    }
+</style>
 <body>
-    <div style="padding: 10px;">
-                                               <button>Mon 1er Bouton</button>
+    <div>
+        <button>Mon 1er Bouton</button>
     </div>
-    <div style="padding: 10px;">
+    <div>
         <button>Mon 2ème Bouton</button>
     </div>
-    <div style="padding: 10px;">
+    <div>
         <button>Mon 3ème Bouton</button>
     </div>
+    <label for="couleur"></label>
+    <input type="color" value="#333f00" name="couleur">
+
+
+    <!--  This CDN/module script must be placed BEFORE the script that contains calls said script. If I called the script containing swal before calling the scritp containing the sweetAlert module. the swal command wouldn't be recognized.-->
     <script src="/node_modules/sweetalert/dist/sweetalert.min.js"></script> <!-- Only easy way to import a module without bundling it is like this.-->
     <script src="/11_Traficotage_DOM/11_DOM.js"></script>
 </body>
 </html>
+
