@@ -1,37 +1,48 @@
-<!-- CE QU'IL FAUT RETENIR POUR LES FONCTIONS => Souvent si je n'ai pas les restultats escomptés, c'est que j'ai oublié d'appeler les variables nécessaire lors de la crétaion de la fonction. -->
-<!-- Sinon, la fonction reverra un undefined ou un null coup pour coup. -->
-<!-- On peut créer une variable directement en paramètre de fonction, pas besoin de la créer avant, ça fonctionne. Puis on définit la valeur variable lors de l'appel de la fonction. -->
-<!-- Without a return statement inside the function, the function will always return "undefined". On peut enfouir un seul "return;" dans une fonction if pour qu'il nous renvoie uniquement notre if. -->
-<!-- When calling the function with parameters, it is recommended you assign a default value to a parameter (e.g. function(parameter1 = 1, parameter2 = 2)) -->
-<!-- Search w3school Automatic Type Conversion (Le premier argument indique le type dans lequel les autres arguments seront convertis. -->
-
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<script>
+  </head>
+  <script>
     // **********************DECLARATION DE LA FONCTION DIVISER PAR DEUX********************************
-    let nombre = prompt('Quel nombre voulez-vous diviser par deux?') ;
+    let nombre = prompt("Quel nombre voulez-vous diviser par deux?");
     function diviserParDeux() {
-     return nombre / 2;
+      return nombre / 2;
     }
     // ***Affichage du résultat***
-        // var result = diviserParDeux(nombre); /* Bien rajouter le paramètre (nombre) même quand on appelle la fonction, sinon le résultat sera NaN.*/
-        // alert(result);
-    
+    // var result = diviserParDeux(nombre); /* Bien rajouter le paramètre (nombre) même quand on appelle la fonction, sinon le résultat sera NaN.*/
+    // alert(result);
+
     // ***Test unitaire de la fonction diviser par deux***
 
-    if(diviserParDeux(2) === 1) {
-        alert("Résultat = " + nombre / 2 + ".\n Vous avez divisé " + nombre + " par 2.");
-    } else if(diviserParDeux(4) === 2) {
-        alert("Résultat = " + nombre / 2 + ".\n Vous avez divisé " + nombre + " par 2.");
-    } else if(diviserParDeux(nombre) === nombre / 2) {
-        alert("Résultat = " + nombre / 2 + ".\n Vous avez divisé " + nombre + " par 2.");
+    if (diviserParDeux(2) === 1) {
+      alert(
+        "Résultat = " +
+          nombre / 2 +
+          ".\n Vous avez divisé " +
+          nombre +
+          " par 2."
+      );
+    } else if (diviserParDeux(4) === 2) {
+      alert(
+        "Résultat = " +
+          nombre / 2 +
+          ".\n Vous avez divisé " +
+          nombre +
+          " par 2."
+      );
+    } else if (diviserParDeux(nombre) === nombre / 2) {
+      alert(
+        "Résultat = " +
+          nombre / 2 +
+          ".\n Vous avez divisé " +
+          nombre +
+          " par 2."
+      );
     } else {
-        alert('Erreur : Veuillez taper un nombre.');
+      alert("Erreur : Veuillez taper un nombre.");
     }
     // ****************************************************************************************************
 
@@ -39,82 +50,97 @@
 
     // Si ça marche pas, essayer en mettant des paramètres dans la fonciton et son appel.
 
-    let calculSomme1 = parseInt(prompt('Quel est le premier nombre de votre addition?')) ; // Attention! Le test unitaire m'a permis de découvrir que le prompt renvoie toujours un string, même s'il ne contient que des nombres.
+    let calculSomme1 = parseInt(
+      prompt("Quel est le premier nombre de votre addition?")
+    ); // Attention! Le test unitaire m'a permis de découvrir que le prompt renvoie toujours un string, même s'il ne contient que des nombres.
     // Il faut donc pour les additions, rajouter la fonction parseInt() pour éviter que 1+1 soit concaténé en 11.
     // Pour la division en revanche, on peut diviser le littéral par un entier et ça marche sans devoir convertir le littéral en entier.
-    let calculSomme2 = parseInt(prompt('Quel est le second nombre de votre addition?')) ;
-
+    let calculSomme2 = parseInt(
+      prompt("Quel est le second nombre de votre addition?")
+    );
 
     function somme2() {
-        // *******************Test unitaire*********************
-        // let calculSomme1 = Math.floor(Math.random() * 100) + 1;
-        // let calculSomme2 = 1;
-        return calculSomme1 + calculSomme2;
+      // *******************Test unitaire*********************
+      // let calculSomme1 = Math.floor(Math.random() * 100) + 1;
+      // let calculSomme2 = 1;
+      return calculSomme1 + calculSomme2;
     }
-    typeof(somme2()) === number ? alert(somme2()) : alert("Error: Did you write two numbers?");
-  
+    typeof somme2() === number
+      ? alert(somme2())
+      : alert("Error: Did you write two numbers?");
 
     // ****************************************************************************************************
 
     // ************************************DECLARATION DE LA FONCTION SIGNE********************************
-    let posiNegaNul = parseInt(prompt('Veuillez taper le chiffre dont vous souhaitez vérifier le signe.')) ;
+    let posiNegaNul = parseInt(
+      prompt("Veuillez taper le chiffre dont vous souhaitez vérifier le signe.")
+    );
     function signe() {
-        return Math.sign(posiNegaNul) ; // Math.sign ne peut renvoyer que cinq valeurs : 1, -1, 0, -0, et Nan, pour indiquer le signe de son paramètre. Ne pas oublier la majuscule à Math.sign .
+      return Math.sign(posiNegaNul); // Math.sign ne peut renvoyer que cinq valeurs : 1, -1, 0, -0, et Nan, pour indiquer le signe de son paramètre. Ne pas oublier la majuscule à Math.sign .
     }
 
-    
     // ***Test unitaire de la fonction signe***
-        if(signe() === -1) {
-            alert('Le nombre que vous avez tapé est négatif.');
-        } else if(signe() === 1) {
-            alert('Le nombre que vous avez tapé est positif.');
-        } else if(signe() === 0) {
-            alert('Le nombre que vous avez tapé est nul.');
-        } else if(signe() === "-0") {
-            alert('Le nombre que vous avez tapé est -0.');
-        } else if(signe() === NaN) {
-            alert('Erreur : Soit ce que vous avez tapé n\'est pas un nombre, soit une autre erreur a été détectée.');
-        } else {
-            alert('Erreur : Veuillez taper un nombre.');
-        }
+    if (signe() === -1) {
+      alert("Le nombre que vous avez tapé est négatif.");
+    } else if (signe() === 1) {
+      alert("Le nombre que vous avez tapé est positif.");
+    } else if (signe() === 0) {
+      alert("Le nombre que vous avez tapé est nul.");
+    } else if (signe() === "-0") {
+      alert("Le nombre que vous avez tapé est -0.");
+    } else if (signe() === NaN) {
+      alert(
+        "Erreur : Soit ce que vous avez tapé n'est pas un nombre, soit une autre erreur a été détectée."
+      );
+    } else {
+      alert("Erreur : Veuillez taper un nombre.");
+    }
     // ****************************************************************************************************
 
     // *******************************DECLARATION DE LA FONCTION FACTORIELLE*******************************
-    let nombreAFacteurs = parseInt(prompt('Veuillez taper un nombre dont vous souhaitez déterminer la factorielle.'));
-    function factorielle() { // faut-il ou pas mettre une variable en paramètre de la fonction??
-        if (nombreAFacteurs === 0) {
-            return 1 ; // Par convention, la factorielle de 0 sera toujours 1. Cet if est facultatif.
+    let nombreAFacteurs = parseInt(
+      prompt(
+        "Veuillez taper un nombre dont vous souhaitez déterminer la factorielle."
+      )
+    );
+    function factorielle() {
+      // faut-il ou pas mettre une variable en paramètre de la fonction??
+      if (nombreAFacteurs === 0) {
+        return 1; // Par convention, la factorielle de 0 sera toujours 1. Cet if est facultatif.
+      } else if (nombreAFacteurs === 1) {
+        return 1; // Par convention, la factorielle de 1 sera toujours 1. Cet if est facultatif.
+      } else {
+        let i,
+          resultat = 1; // Ici, je déclare la même valeur pour deux variables d'un coup.
+        for (i = 1; i <= nombreAFacteurs; i++) {
+          // Pour mieux comprendre le calcul de la factorielle,On peut voir l'initialisation de la boucle for comme le début et la condition de la boucle comme la fin.
+          resultat *= i; // à chaque itération resultat sera à nouveau multiplié par i pour obtenir directement le produit de tous les multiples de i à resultat.
         }
-        else if (nombreAFacteurs === 1) {
-            return 1 ; // Par convention, la factorielle de 1 sera toujours 1. Cet if est facultatif.
-        }
-        else {
-            let i, resultat = 1; // Ici, je déclare la même valeur pour deux variables d'un coup.
-            for(i = 1; i <= nombreAFacteurs; i++) {  // Pour mieux comprendre le calcul de la factorielle,On peut voir l'initialisation de la boucle for comme le début et la condition de la boucle comme la fin.
-                resultat *= i;   // à chaque itération resultat sera à nouveau multiplié par i pour obtenir directement le produit de tous les multiples de i à resultat.
-                }  
-            return resultat;
-        }
-        // Que se passe-t-il si on utilise un nombre négatif, il me semble que les nombres négatifs n'ont pas de factorielle??
+        return resultat;
+      }
+      // Que se passe-t-il si on utilise un nombre négatif, il me semble que les nombres négatifs n'ont pas de factorielle??
     }
-
 
     // ***************************** Test unitaire de la fonction factorielle ******************************
-    
+
     if (factorielle() === 1) {
-        alert(`La factorielle est 1, vous avez donc tapé 0, 1, ou bien un nombre négatif (ramenant à 0 avec ce calcul); Si ce n'est pas le cas, il y a un bogue.`)
-    }
-    else if (factorielle() === 6) {
-        alert(`La factorielle est 6, vous avez donc tapé 3. Si ce n'est pas le cas, il y a un bogue.`)
-    }
-    else if (factorielle() === 24) {
-        alert(`La factorielle est 24, vous avez donc tapé 4. Si ce n'est pas le cas, il y a un bogue.`)
-    }
-    else if (factorielle()) {
-        alert(`La factorielle de la valeur choisie est ${factorielle()}`)
-    }
-    else {
-        alert('Erreur : Soit ce que vous avez tapé n\'est pas un nombre, soit une autre erreur a été détectée.')
+      alert(
+        `La factorielle est 1, vous avez donc tapé 0, 1, ou bien un nombre négatif (ramenant à 0 avec ce calcul); Si ce n'est pas le cas, il y a un bogue.`
+      );
+    } else if (factorielle() === 6) {
+      alert(
+        `La factorielle est 6, vous avez donc tapé 3. Si ce n'est pas le cas, il y a un bogue.`
+      );
+    } else if (factorielle() === 24) {
+      alert(
+        `La factorielle est 24, vous avez donc tapé 4. Si ce n'est pas le cas, il y a un bogue.`
+      );
+    } else if (factorielle()) {
+      alert(`La factorielle de la valeur choisie est ${factorielle()}`);
+    } else {
+      alert(
+        "Erreur : Soit ce que vous avez tapé n'est pas un nombre, soit une autre erreur a été détectée."
+      );
     }
 
     // *********************** AUTRE METHODE POUR LA FONCTION FACTORIELLE ***********************************
@@ -133,9 +159,6 @@
     // Les fonctions fonctionnent de la manière suivante : déclaration de la fonction : function ABCD(variable)
     // Puis appel de la valeur de retour (return, résultat) de la fonction : par exemple : console.log(ABCD(3)) ........; On remplace le paramètre variable par une valeur pour le test unitaire, on gardera la variable qu'on personnalisera avec un prompt en conditions réelles.
     // Pas besoin de déclarer la variable avant l'appel de la fonction, on la déclare en paramètre de la fonction. Je n'ai pas besoin de mettre nombreAFacteurs en paramètre de ma variable ici, sauf si je veux faire des tests unitaires rapidees en changent directement la variable dans le paramètre de la fonction lorsque je l'appelle.
-
-</script>
-<body>
-    
-</body>
+  </script>
+  <body></body>
 </html>

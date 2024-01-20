@@ -1,40 +1,36 @@
-//  x méthode is not defined, signifie que j'ai oublié de mettre un objet devant la méthode à appeler ou que je n'ai pas mis un objet qui existe.
-// all elements are nodes, nodes aren't always elements. Les éléments correspondent à un éléments que j'ai tapé dans mon HTML (souvent mis dans des variables pour simplifier)
-
-// Quand je déclare une varialbe qui contient un élément DOM. TOUJOURS utiliser la console et taper le nom de la variable pour voir si mon tableau contient réellement ce à quoi je pense. Dans le cas du DOM, il faut ABSOLUMENT taper le nom des éléments DOM dans la cconsole. Alert ne fonctionne pas aussi bien, niveau résultats.
-
-
-
 ////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Remove a class ////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
-const second = document.getElementById('second');      //getting the paragraph with class "hidden"
-second.classList.remove('hidden');                     //removing "hidden" from classlist of id "second", so directly removing the class from the tag.
+const second = document.getElementById("second"); //getting the paragraph with class "hidden"
+second.classList.remove("hidden"); //removing "hidden" from classlist of id "second", so directly removing the class from the tag.
 
 ////////////////////////////////////////////////////////////////////////////
 /////////////////////// Spoilers-hiding button /////////////////////////////
 ////////////////////////////////////////////////////////////////////////////
 
 ///////////////// CREATING THE BUTTON THROUGH HTML /////////////////////////
-var newButton = document.createElement('button');
+var newButton = document.createElement("button");
 newButton.textContent = "Hide Spoilers";
 newButton.id = "myButton";
-newButton.innerHTML += "!!!!!"                               // Side note : It seems that I can't modify this button with outerHTML  because it's expecting the button to actually be in the html file, which it isn't. innerHTML replaces what is already contained within the tag.
+newButton.innerHTML += "!!!!!"; // Side note : It seems that I can't modify this button with outerHTML  because it's expecting the button to actually be in the html file, which it isn't. innerHTML replaces what is already contained within the tag.
 
-//////////////////// ACTUALLY DISPLAYING IT //////////////////////////////// 
-document.getElementById("section2").insertAdjacentElement("afterbegin", newButton); // Plutôt que AppendChild, je peux ici précisément mettre le bouton où je veux.
+//////////////////// ACTUALLY DISPLAYING IT ////////////////////////////////
+document
+  .getElementById("section2")
+  .insertAdjacentElement("afterbegin", newButton); // Plutôt que AppendChild, je peux ici précisément mettre le bouton où je veux.
 
 //////////////////// LISTENING FOR CLICK, executing function on click //////
-newButton.addEventListener("click", myFunction);              // specifying the Type, then listener (function that listens for an event). Notice the lack of parentheses !!!
+newButton.addEventListener("click", myFunction); // specifying the Type, then listener (function that listens for an event). Notice the lack of parentheses !!!
 // I can call either the const newButton, or the ID I set for the button, both work for the previous line.
 
 function myFunction() {
-    /////////// ADDING A "HIDDEN" CLASS WHEN SELECTING BY CLASSNAME ////////
-    const spoiler = document.getElementsByClassName('spoiler');
+  /////////// ADDING A "HIDDEN" CLASS WHEN SELECTING BY CLASSNAME ////////
+  const spoiler = document.getElementsByClassName("spoiler");
 
-    for (i = 0 ; i < spoiler.length ; i++) {                // Selecting by classname returns an array since multiple elements can have the same class. You have to iterate and not forget the index !
-        spoiler[i].classList.toggle('hidden');              // "toggle" the class attribute rather than "add" to make the button re-clickable.
-    }
+  for (i = 0; i < spoiler.length; i++) {
+    // Selecting by classname returns an array since multiple elements can have the same class. You have to iterate and not forget the index !
+    spoiler[i].classList.toggle("hidden"); // "toggle" the class attribute rather than "add" to make the button re-clickable.
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////
@@ -49,14 +45,16 @@ myBlerb.style["background-color"] = "red";
 const myBlerb2 = document.getElementsByClassName("myBlerb")[1];
 myBlerb2.setAttribute("style", "color : blue");
 
-
 ////////////////////// MODIFYING P1 ONCLICK ///////////////////////////////
 // myBlerb.onclick = () => {myBlerb.classList.add("highlighted")}; // can't modify the classList as my previously added style attribute takes precedence on any CSS modification (as style attributes are directly read by the DOM, in case of conflic, the CSS gets ignored.)
-myBlerb.onclick = () => {myBlerb.setAttribute("style", "background-color : yellow")};
-
+myBlerb.onclick = () => {
+  myBlerb.setAttribute("style", "background-color : yellow");
+};
 
 ////////////////////// MODIFYING P2 ONCLICK W/ DIFFERENT METHOD ///////////
-myBlerb2.addEventListener("click", () => {myBlerb2.classList.toggle("highlighted")}); // directly adding the content of my would-be function will ignore the AddEventListener method, use a function or an anonymous function instead, like here. toggle or add
+myBlerb2.addEventListener("click", () => {
+  myBlerb2.classList.toggle("highlighted");
+}); // directly adding the content of my would-be function will ignore the AddEventListener method, use a function or an anonymous function instead, like here. toggle or add
 
 //////////////// MODIFYING ENTIRE DOCUMENT.WINDOW ONCLICK /////////////////
 // const allParagraphs = document.getElementsByTagName('p');
@@ -70,16 +68,19 @@ myBlerb2.addEventListener("click", () => {myBlerb2.classList.toggle("highlighted
 //////////////////////////// Filtrage selon moi //////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
-function displayMySelection (mySelection) {
-    const myArray = document.getElementsByClassName(mySelection);
-    const allItems = document.getElementsByClassName("item");
-    console.log(myArray) // DEBUG to check if I do get an array of all HTML lines containing the class of the button I clicked.
-    for (var oneLi of myArray) { // oneLi, c'est comme si on faisait mySelection[i] avec une boucle for ??
-        if (oneLi.classList.contains(mySelection) === true) oneLi.classList.toggle('hidden'); //or classList.remove()
-    }
-    for (var oneLi of allItems) { // I can only repeat the use of oneLi because I declared it with var, therefore it is locally isolated.
-        if (mySelection === 'all') oneLi.classList.toggle('hidden'); //or classList.remove()
-    }
+function displayMySelection(mySelection) {
+  const myArray = document.getElementsByClassName(mySelection);
+  const allItems = document.getElementsByClassName("item");
+  console.log(myArray); // DEBUG to check if I do get an array of all HTML lines containing the class of the button I clicked.
+  for (var oneLi of myArray) {
+    // oneLi, c'est comme si on faisait mySelection[i] avec une boucle for ??
+    if (oneLi.classList.contains(mySelection) === true)
+      oneLi.classList.toggle("hidden"); //or classList.remove()
+  }
+  for (var oneLi of allItems) {
+    // I can only repeat the use of oneLi because I declared it with var, therefore it is locally isolated.
+    if (mySelection === "all") oneLi.classList.toggle("hidden"); //or classList.remove()
+  }
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -99,7 +100,6 @@ function displayMySelection (mySelection) {
 //     let filter = element ;
 //     document.getElementById(filter+'Trigger').onclick = function(){displayFilteredProducts}
 // }
-
 
 ///////////////////////////////////////////////////////////////////////////////
 /////////////////////////// Filtrage selon W3School /////////////////////////// // In a function, the parameters between parentheses serve as templates for different outcomes to occur depending on the value of the parameter not when the funciton is declared, but when it is called upon.
@@ -130,7 +130,7 @@ function displayMySelection (mySelection) {
 //       }
 //     }
 //   }
-  
+
 // // Hide elements that are not selected
 // function removeClass(element, name) {
 // var i, arr1, arr2;

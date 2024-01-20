@@ -1,117 +1,108 @@
-<!-- Attention, concatener des tableaux tablo1[1,2] et tablo2[3,4] donnera un seul tablo3[1,2,3,4] -->
-<!-- Or, imbriquer des tableaux (e.g. tablo4[[tablo1][tablo2]] donnera un résultat différent car tablo4 n'a que deux indices, l'indice 0 (tablo1) et l'indice 1 (tablo2)) -->
 <!-- Mon code a besoin d'utiliser plus de comparateurs, de ternaires, et de boucles whiles plutôt que for pour être simplifié. Pas besoin d'utiliser de .includes() non plus, trop alambiqué.-->
-
 
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
+  </head>
+
+  <script>
+
+    var mauvaisesLettres = [ ]; // sera complété pendant le jeu.
+    var lettresAttendues = [ 'l', 'u', 'i', 'g', 'i' ]; // Prendre note des lettres répétitives pour créer les statements.
+    var lettresUtilisees = [ ] ;
+
+    pickLetter:         //labelling loops helps if you want to go back to the begining of the loop with "continue statement". Label can be on the same line as the loop.
+    for (attempt=0, onwWin = false ; onWin = false && attempt < 10 ; attempt++) {               // Implementing 10 attempts and on win loop breaking.
+        var lettreUtilisateur = prompt('Veuillez taper une lettre pour commencer.');
+        var lettreUtilisateur = lettreUtilisateur.toLowerCase();
 
 
-<script>
+        for (osef=1; osef > 0; osef++) {
+            if (lettresUtilisees.includes(lettreUtilisateur) === false) {
+                for (end2 = false ; end2 = false ; end2++) {
+                    if (lettresAttendues.length > 0) {
+                        if (lettresAttendues[0].includes(lettreUtilisateur) === true) {
+                            alert(` La lettre ${lettreUtilisateur} fait bien partie du mot recherché.`) ;
+                            lettresAttendues.splice(1, 1);
+                            break;
+                            end2 = true
+                        } else if (lettresAttendues[1].includes(lettreUtilisateur) === true) {
+                            alert(` La lettre ${lettreUtilisateur} fait bien partie du mot recherché.`) ;
+                            lettresAttendues.splice(1, 1);
+                            break;
+                            end2 = true
+                        } else if (lettresAttendues[2].includes(lettreUtilisateur) === true) {
+                            alert(` La lettre ${lettreUtilisateur} fait bien partie du mot recherché.`) ;
+                            lettresAttendues.splice(2, 1);
+                            break;
+                            end2 = true
+                        } else if (lettresAttendues[3].includes(lettreUtilisateur) === true) {
+                            alert(` La lettre ${lettreUtilisateur} fait bien partie du mot recherché.`) ;
+                            lettresAttendues.splice(3, 1);
+                            break;
+                            end2 = true
+                        } else if (lettresAttendues[4].includes(lettreUtilisateur) === true) {
+                            alert(` La lettre ${lettreUtilisateur} fait bien partie du mot recherché.`) ;
+                            lettresAttendues.splice(4, 1);
+                            break;
+                            end2 = true
+                        }
 
-var mauvaisesLettres = [ ]; // sera complété pendant le jeu.
-var lettresAttendues = [ 'l', 'u', 'i', 'g', 'i' ]; // Prendre note des lettres répétitives pour créer les statements.
-var lettresUtilisees = [ ] ;
-
-pickLetter:         //labelling loops helps if you want to go back to the begining of the loop with "continue statement". Label can be on the same line as the loop.
-for (attempt=0, onwWin = false ; onWin = false && attempt < 10 ; attempt++) {               // Implementing 10 attempts and on win loop breaking.
-    var lettreUtilisateur = prompt('Veuillez taper une lettre pour commencer.');
-    var lettreUtilisateur = lettreUtilisateur.toLowerCase();
 
 
-    for (osef=1; osef > 0; osef++) {
-        if (lettresUtilisees.includes(lettreUtilisateur) === false) {
-            for (end2 = false ; end2 = false ; end2++) {
-                if (lettresAttendues.length > 0) {
-                    if (lettresAttendues[0].includes(lettreUtilisateur) === true) {
+
+
                         alert(` La lettre ${lettreUtilisateur} fait bien partie du mot recherché.`) ;
-                        lettresAttendues.splice(1, 1); 
+                        lettresUtilisees.push(lettreUtilisateur);
+                        end2 = true                                                                     // Condition de fin de boucle, end est réinitialisé à 0 au début de la boucle pour que la boucle se relance
+                        // continue;                                                                    // Sinon, seul moyen trouvé pour que ma boucle for ne se répètre pas à l'infini.
+                    } else if (lettresUtilisees.length === lettreAttendues.length) {                    //Quand toutes les lettres ont été trouvées et qu'il y a autant de lettres dans le tableau de départ que celui de fin.
+                        let success = new Audio('/resources/sound.mp3');
+                        success.play();
+                        alert(`S  U  P  E  R\n\nSuccès déverrouillé : "Mon premier pendu"\n\nBien joué !`)
+                        onWin = true;
                         break;
-                        end2 = true
-                    } else if (lettresAttendues[1].includes(lettreUtilisateur) === true) {
-                        alert(` La lettre ${lettreUtilisateur} fait bien partie du mot recherché.`) ;
-                        lettresAttendues.splice(1, 1); 
-                        break;
-                        end2 = true
-                    } else if (lettresAttendues[2].includes(lettreUtilisateur) === true) {
-                        alert(` La lettre ${lettreUtilisateur} fait bien partie du mot recherché.`) ;
-                        lettresAttendues.splice(2, 1); 
-                        break;
-                        end2 = true
-                    } else if (lettresAttendues[3].includes(lettreUtilisateur) === true) {
-                        alert(` La lettre ${lettreUtilisateur} fait bien partie du mot recherché.`) ;
-                        lettresAttendues.splice(3, 1); 
-                        break;
-                        end2 = true
-                    } else if (lettresAttendues[4].includes(lettreUtilisateur) === true) {
-                        alert(` La lettre ${lettreUtilisateur} fait bien partie du mot recherché.`) ;
-                        lettresAttendues.splice(4, 1); 
-                        break;
-                        end2 = true
+                    } else {
+                        alert(`Une erreur s'est produite. Retour au début.`);
+                        continue pickLetter;
                     }
-
-
-
-
-
-                    alert(` La lettre ${lettreUtilisateur} fait bien partie du mot recherché.`) ;
-                    lettresUtilisees.push(lettreUtilisateur);
-                    end2 = true                                                                     // Condition de fin de boucle, end est réinitialisé à 0 au début de la boucle pour que la boucle se relance
-                    // continue;                                                                    // Sinon, seul moyen trouvé pour que ma boucle for ne se répètre pas à l'infini.
-                } else if (lettresUtilisees.length === lettreAttendues.length) {                    //Quand toutes les lettres ont été trouvées et qu'il y a autant de lettres dans le tableau de départ que celui de fin.                                                               
-                    let success = new Audio('/resources/sound.mp3');
-                    success.play();
-                    alert(`S  U  P  E  R\n\nSuccès déverrouillé : "Mon premier pendu"\n\nBien joué !`)
-                    onWin = true;
-                    break;
-                } else {
-                    alert(`Une erreur s'est produite. Retour au début.`);
-                    continue pickLetter;
                 }
+                }
+            } else if (lettresUtilisees.includes(lettreUtilisateur) === true){
+                lettreUtilisateur = prompt('Cette lettre a déjà été trouvée, veuillez en choisir une autre.');
+                continue ;              // je recommence cette boucle-même. Sans ce paramètre ma boucle parente 'pickLetter' continuerait jusqu'au bout alors que je n'ai même pas  écrit la bonne lettre
+            } else if (!lettreUtilisateur) {
+                lettreUtilisateur = prompt(`Vous n'avez rien tapé. Veuillez réessayer`);
+                continue ;
             }
-            }
-        } else if (lettresUtilisees.includes(lettreUtilisateur) === true){
-            lettreUtilisateur = prompt('Cette lettre a déjà été trouvée, veuillez en choisir une autre.');
-            continue ;              // je recommence cette boucle-même. Sans ce paramètre ma boucle parente 'pickLetter' continuerait jusqu'au bout alors que je n'ai même pas  écrit la bonne lettre
-        } else if (!lettreUtilisateur) {
-            lettreUtilisateur = prompt(`Vous n'avez rien tapé. Veuillez réessayer`);
-            continue ;
         }
+
+
+
+
+
+
+        } else if (lettresAttendues[Number(a)].includes(lettreUtilisateur) === false) {
+            continue pickLetter;
+
     }
 
+    // if () {
+    //     mauvaisesLettres.push(lettreUtilisateur);
+    //     alert(`P  E  R  D  U\n\nErreur ${mauvaisesLettres.length}/10 `);
+    //     if (mauvaisesLettres >= 10) {
+    //         if (confirm(`La partie est terminée. Et... vous avez échoué.\n\nRecommencer?`) === true) {
+    //             location.reload();
+    //         } else {
+    //             onWin = true;
+    //             break;
+    //         }
+    //     }
+    // }
+  </script>
 
-
-
-
-
-    } else if (lettresAttendues[Number(a)].includes(lettreUtilisateur) === false) { 
-        continue pickLetter;
-  
-}
-
-// if () {
-//     mauvaisesLettres.push(lettreUtilisateur);
-//     alert(`P  E  R  D  U\n\nErreur ${mauvaisesLettres.length}/10 `);
-//     if (mauvaisesLettres >= 10) {
-//         if (confirm(`La partie est terminée. Et... vous avez échoué.\n\nRecommencer?`) === true) {
-//             location.reload();
-//         } else {
-//             onWin = true;
-//             break;
-//         }
-//     }
-// }
-
-</script>
-
-
-
-<body>
-    
-</body>
+  <body></body>
 </html>
