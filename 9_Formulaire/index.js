@@ -1,6 +1,6 @@
-////////////////////////////////////////////////////
-////////////////////BONJOUR/////////////////////////
-////////////////////////////////////////////////////
+/***************************************************/
+/***************** Saying hello ********************/
+/***************************************************/
 
 // Replacing h1 element's textContent to say HELLO WORLD.
 let myTitle = document.getElementById("header1");
@@ -8,9 +8,9 @@ myTitle.textContent = "☢️💥☢️💥☢️💥☢️💥☢️💥☢️�
 // alert("BOOM"); // Look at the sheer amount of nodes in there. It can help understand the DOM tree.
 // alert("HELLO WORLD"); // L'alerte s'affiche AVANT que l'objet textContent de myTitle soit modifié, bizzarement.
 
-////////////////////////////////////////////////////
-//////////////Afficher les inputs///////////////////
-////////////////////////////////////////////////////
+/***************************************************/
+/*************** Afficher les inputs ***************/
+/***************************************************/
 
 let form = document.getElementsByName("formulaire")[0]; // obligatoire de mettre l'index car la method getElements est plurielle et suppose plusieurs names. En choisir un.
 let input1 = form.getElementsByTagName("input")[0].value; // ne pas oublier .value, ça prend l'attribut value dans <input value="abcdfefe">!

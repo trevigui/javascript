@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+    font-family: "calibri";
+    margin: auto;/* Center everyhting on viexport */
+}
+
+body {
+    display: flex;
+    justify-content: center; /* Center align row items vertically */
+    min-height: 100vh; /* Set minimum to fill the viewport */
+}
+
+/* Slideshow container */
+
+.slides {
+    width: inherit;
+    height: 200px;
+    display: flex;
+    flex-direction: column-reverse; /* image renders from the bottom up, therfor doesn't overshadow the buttons */
+}
+
+#imagePlaceholder {
+    width: 500px;
+    display: flex;
+    border: 10px solid transparent;
+    padding: 15px;
+    border-image: linear-gradient(#f6b73c, #4d9f0c) 30 ;
+    margin-bottom: 2em; /* Even with column reverse applied on the slides container, margin top stays at the top rather than the bottom of the picture frame*/
+}
+
+.slideshowContainer {
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: space-around;
+}
+
+/* Next & previous buttons */
+.previousPicButton, .nextPicButton {
+    margin-top : 1em;
+    text-decoration: none;
+    cursor: pointer;
+    width: 130px; /* centering the dots and buttons */
+    text-align: center; /* centering the dots and buttons */
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    /* Making that text FABULOUS */
+    background: linear-gradient(90deg, #f6b73c, #4d9f0c);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Dot indicators */
+
+.dots {
+    user-select: none;
+    display:flex;
+    flex-wrap:wrap; /* Making sure those dots wrap nicely instead of overflowing in case of a long image array. */
+    justify-content: center;
+}
+
+.dot {
+    cursor: pointer;
+    height: 1rem;
+    width: 1rem;
+    margin: 0 0.5rem;
+    background-color: transparent;
+    border-color: #e1d2b4;
+    border-width: 5px;
+    border-style: solid;
+    border-radius: 50%;
+    display: inline-block;
+    transition: border-color 0.6s ease;
+}
+
+.active, .dot:hover { /* active class will be triggered by JS */
+    background-color: #4d9f0c;
+}
+
+/* Fading animation */
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}

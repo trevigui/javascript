@@ -1,4 +1,10 @@
 {
     "dotnetAcquisitionExtension.enableTelemetry": false,
-    "quokka.automaticRestart": true
+    "quokka.automaticRestart": true,
+    "animations.CursorAnimationOptions": {
+        "Color": "#70c4a8",
+        "TrailLength": 2
+    },
+    "animations.CursorAnimation": false,
+    "animations.Smooth-Mode": false
 }
