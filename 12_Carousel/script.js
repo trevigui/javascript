@@ -32,7 +32,7 @@ var buttonPressed = "none"; // Three options : "none", "next", and "previous"
 // ********************************** Slideshow: logic ***************************************
 // *******************************************************************************************
 
-function showSlides() {
+async function showSlides() {
   console.log("DOT INDEX " + currentDotIndex);
 
   previousPicButton.onclick = () => {
